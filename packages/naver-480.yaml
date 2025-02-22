@@ -1,0 +1,370 @@
+text_sensor:
+  - platform: sun
+    name: Sun Rise
+    id: sun_rise
+    type: sunrise
+    internal: True
+    on_value:
+      - lvgl.label.update:
+          id: home_weather_sunrise
+          text: 
+            format: "#FFA500 \U000F059C# %s"
+            args: [ x.c_str() ]
+            
+  - platform: sun
+    name: Sun set
+    id: sun_set
+    type: sunset
+    internal: True
+    on_value:
+      - lvgl.label.update:
+          id: home_weather_sunset
+          text: 
+            format: "%s #FF0000 \U000F059B#"
+            args: [ x.c_str() ]
+#네이버 날씨
+  - platform: homeassistant
+    entity_id: weather.naver_weather_1
+    name: naver weather 
+    id: naver_weather_1
+    on_value:
+      - if:
+          condition:
+            or:
+              - lambda: 'return id(naver_weather_1).state == "sunny";'
+              - lambda: 'return id(naver_weather_1).state == "clear";'
+          then:
+            - lvgl.image.update:
+                id: home_weather_icon
+                src: sunny
+            - lvgl.image.update:
+                id: time_weather_icon
+                src: sunny
+      - if:
+          condition:
+            or:
+              - lambda: 'return id(naver_weather_1).state == "clear-night";'
+              - lambda: 'return id(naver_weather_1).state == "night";'
+          then:
+            - lvgl.image.update:
+                id: home_weather_icon
+                src: clearnight
+            - lvgl.image.update:
+                id: time_weather_icon   
+                src: clearnight             
+      - if:
+          condition:
+            - lambda: 'return id(naver_weather_1).state == "partlycloudy";'
+          then:
+            - lvgl.image.update:
+                id: home_weather_icon
+                src: partlycloud
+            - lvgl.image.update:
+                id: time_weather_icon   
+                src: partlycloud             
+      - if:
+          condition:
+            and:              
+              - lambda: 'return id(naver_weather_1).state == "partlycloudy";'
+              - sun.is_below_horizon:
+          then:
+            - lvgl.image.update:
+                id: home_weather_icon
+                src: nightpartlycloud
+            - lvgl.image.update:
+                id: time_weather_icon 
+                src: nightpartlycloud               
+      - if:
+          condition:            
+            - lambda: 'return id(naver_weather_1).state == "cloudy";'
+            - sun.is_below_horizon:
+          then:
+            - lvgl.image.update:
+                id: home_weather_icon
+                src: scloud
+            - lvgl.image.update:
+                id: time_weather_icon  
+                src: scloud              
+      - if:
+          condition:            
+            and:              
+              - lambda: 'return id(naver_weather_1).state == "cloudy";'
+          then:
+            - lvgl.image.update:
+                id: home_weather_icon
+                src: cloudy
+            - lvgl.image.update:
+                id: time_weather_icon      
+                src: cloudy          
+      - if:
+          condition:
+            - lambda: 'return id(naver_weather_1).state == "rainy";'
+          then:
+            - lvgl.image.update:
+                id: home_weather_icon
+                src: rainy
+            - lvgl.image.update:
+                id: time_weather_icon  
+                src: rainy              
+      - if:
+          condition:
+            - lambda: 'return id(naver_weather_1).state == "pouring";'
+          then:
+            - lvgl.image.update:
+                id: home_weather_icon
+                src: pouring 
+            - lvgl.image.update:
+                id: time_weather_icon   
+                src: pouring              
+      - if:
+          condition:
+            - lambda: 'return id(naver_weather_1).state == "hail";'
+          then:
+            - lvgl.image.update:
+                id: home_weather_icon
+                src: hail   
+            - lvgl.image.update:
+                id: time_weather_icon   
+                src: hail               
+      - if:
+          condition:
+            - lambda: 'return id(naver_weather_1).state == "snowy";'
+          then:
+            - lvgl.image.update:
+                id: home_weather_icon
+                src: snowy
+            - lvgl.image.update:
+                id: time_weather_icon    
+                src: snowy            
+      - if:
+          condition:
+            or:
+              - lambda: 'return id(naver_weather_1).state == "lightning";'
+              - lambda: 'return id(naver_weather_1).state == "lightning-rainy";'
+              - lambda: 'return id(naver_weather_1).state == "thender";'
+          then:
+            - lvgl.image.update:
+                id: home_weather_icon
+                src: lightning
+            - lvgl.image.update:
+                id: time_weather_icon
+                src: lightning                
+
+      
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_nowweather_1
+    name: naver weather nowweather
+    id: naver_weather_nowweather_1
+    on_value: 
+      then:
+        - lvgl.label.update:
+            id: home_weather_text
+            text: 
+              format: "%s"
+              args: [ x.c_str() ]
+
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_windbearing_1
+    name: naver weather windbearing
+    id: naver_weather_windbearing_1
+    on_value:
+      - lvgl.label.update:
+          id: home_weather_hum
+          text: 
+            format: "#47ACF5 습도# %.0f%% #02D109 %s풍# %.1f m/s"
+            args: [ 'id(naver_weather_humidity_1).state' , x.c_str(),'id(naver_weather_windspeed_1).state']    
+
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_rainystarttmr_1
+    name: naver weather rainystarttmr
+    id: naver_weather_rainystarttmr_1
+    on_value:          
+      - if: 
+          condition:
+            - lambda: 'return id(naver_weather_rainystarttmr_1).state != "비안옴";'
+          then:
+            - lvgl.widget.show: home_weather_rainystarttmr
+            #- lvgl.widget.show: time_rainfall
+            - lvgl.label.update:
+                id: home_weather_rainystarttmr
+                text: 
+                  format: "%s 비 내림 (%smm)"
+                  args: [ x.c_str(), id(naver_weather_rainfall_1).state.c_str() ]
+           # - lvgl.label.update:
+            #    id: time_rainfall
+             #   text: 
+              #    format: "\U000F054A %s 비 내림 (%smm)"
+               #   args: [ x.c_str(), #id(naver_weather_rainfall_1).state.c_str() ]
+          else:
+            - lvgl.widget.hide: home_weather_rainystarttmr
+            #- lvgl.widget.hide: time_rainfall
+
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_rainfall_1
+    name: naver weather rainfall
+    id: naver_weather_rainfall_1
+
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_finedustgrade_1
+    name: naver_weather_finedustgrade_1
+    id: naver_weather_finedustgrade_1
+    on_value:
+      - lvgl.label.update:
+          id: home_weather_pm10
+          text: !lambda |-
+            static char buf[15];
+            std::string x_str = (id(naver_weather_finedustgrade_1).state);
+            snprintf(buf, sizeof(buf), "%s", x_str.c_str());
+            if (x_str == "좋음") {
+              lv_obj_set_style_text_color(id(home_weather_pm10), lv_color_hex(0x005AC7), LV_STATE_DEFAULT); // 딥블루
+            } else if (x_str == "보통") {
+              lv_obj_set_style_text_color(id(home_weather_pm10), lv_color_hex(0x00FF00), LV_STATE_DEFAULT); // 녹색
+            } else if (x_str == "나쁨") {
+              lv_obj_set_style_text_color(id(home_weather_pm10), lv_color_hex(0xFFA500), LV_STATE_DEFAULT); // 오렌지색
+            } else if (x_str == "매우나쁨") {
+              lv_obj_set_style_text_color(id(home_weather_pm10), lv_color_hex(0xFF0000), LV_STATE_DEFAULT); // 레드
+            }
+            return buf;
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_ultrafinedustgrade_1
+    name: naver_weather_ultrafinedustgrade_1
+    id: naver_weather_ultrafinedustgrade_1   
+    on_value:
+      - lvgl.label.update:
+          id: home_weather_pm25
+          text: !lambda |-
+            static char buf[15];
+            std::string x_str = (id(naver_weather_ultrafinedustgrade_1).state);
+            snprintf(buf, sizeof(buf), "%s", x_str.c_str());
+            if (x_str == "좋음") {
+              lv_obj_set_style_text_color(id(home_weather_pm25), lv_color_hex(0x005AC7), LV_STATE_DEFAULT); // 딥블루
+            } else if (x_str == "보통") {
+              lv_obj_set_style_text_color(id(home_weather_pm25), lv_color_hex(0x00FF00), LV_STATE_DEFAULT); // 녹색
+            } else if (x_str == "나쁨") {
+              lv_obj_set_style_text_color(id(home_weather_pm25), lv_color_hex(0xFFA500), LV_STATE_DEFAULT); // 오렌지색
+            } else if (x_str == "매우나쁨") {
+              lv_obj_set_style_text_color(id(home_weather_pm25), lv_color_hex(0xFF0000), LV_STATE_DEFAULT); // 레드
+            }
+            return buf;
+
+
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_ozongrade_1
+    name: naver weather ozongrade
+    id: naver_weather_ozongrade_1    
+    on_value:
+      - lvgl.label.update:
+          id: home_weather_ozongrade
+          text: !lambda |-
+            static char buf[15];
+            std::string x_str = (id(naver_weather_ozongrade_1).state);
+            snprintf(buf, sizeof(buf), "%s", x_str.c_str());
+            if (x_str == "좋음") {
+              lv_obj_set_style_text_color(id(home_weather_ozongrade), lv_color_hex(0x005AC7), LV_STATE_DEFAULT); // 딥블루
+            } else if (x_str == "보통") {
+              lv_obj_set_style_text_color(id(home_weather_ozongrade), lv_color_hex(0x00FF00), LV_STATE_DEFAULT); // 녹색
+            } else if (x_str == "나쁨") {
+              lv_obj_set_style_text_color(id(home_weather_ozongrade), lv_color_hex(0xFFA500), LV_STATE_DEFAULT); // 오렌지색
+            } else if (x_str == "매우나쁨") {
+              lv_obj_set_style_text_color(id(home_weather_ozongrade), lv_color_hex(0xFF0000), LV_STATE_DEFAULT); // 레드
+            }
+            return buf;
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_todayuvgrade_1
+    name: naver weather todayuvgrade
+    id: naver_weather_todayuvgrade_1   
+    on_value:
+      - lvgl.label.update:
+          id: home_weather_todayuvgrade
+          text: !lambda |-
+            static char buf[15];
+            std::string x_str = (id(naver_weather_todayuvgrade_1).state);
+            snprintf(buf, sizeof(buf), "%s", x_str.c_str());
+            if (x_str == "좋음") {
+              lv_obj_set_style_text_color(id(home_weather_todayuvgrade), lv_color_hex(0x005AC7), LV_STATE_DEFAULT); // 딥블루
+            } else if (x_str == "보통") {
+              lv_obj_set_style_text_color(id(home_weather_todayuvgrade), lv_color_hex(0x00FF00), LV_STATE_DEFAULT); // 녹색
+            } else if (x_str == "높음") {
+              lv_obj_set_style_text_color(id(home_weather_todayuvgrade), lv_color_hex(0xFFA500), LV_STATE_DEFAULT); // 오렌지색
+            } else if (x_str == "매우높음") {
+              lv_obj_set_style_text_color(id(home_weather_todayuvgrade), lv_color_hex(0xFF0000), LV_STATE_DEFAULT); // 레드
+            }
+            return buf;
+sensor:
+#HA Sensors
+# Naver Weather
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_todaymintemp_1
+    name: naver weather todaymintemp
+    id: naver_weather_todaymintemp_1
+    accuracy_decimals: 1
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_todaymaxtemp_1
+    name: naver weather todaymaxtemp
+    id: naver_weather_todaymaxtemp_1
+    accuracy_decimals: 1
+    on_value:
+      - lvgl.label.update:
+          id: home_weather_minmax
+          text: 
+            format: "#47ACF5 %.1f°#|#FF0000 %.1f°#"
+            args: [ 'id(naver_weather_todaymintemp_1).state', 'x' ]
+      - lvgl.label.update:
+          id: time_minmax
+          text: 
+            format: "#47ACF5 %.1f°#|#FF0000 %.1f°#"
+            args: [ 'id(naver_weather_todaymintemp_1).state', 'x' ]
+
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_nowtemp_1
+    name: naver weather nowtemp
+    id: naver_weather_nowtemp_1
+    accuracy_decimals: 1
+    
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_humidity_1
+    name: naver weather humidity
+    id: naver_weather_humidity_1    
+    on_value:
+      - lvgl.label.update:
+          id: home_weather_hum
+          text: 
+            format: "#47ACF5 습도# %.0f%% #02D109 %s풍# %.1f m/s"
+            args: [ 'x', 'id(naver_weather_windbearing_1).state.c_str()', 'id(naver_weather_windspeed_1).state']
+      - lvgl.label.update:
+          id: time_hum
+          text:
+            format: "\U000F058E%.0f%%"
+            args: [ 'x' ]
+
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_todayfeeltemp_1
+    name: naver weather todayfeeltemp
+    id: naver_weather_todayfeeltemp_1
+    on_value:
+      - lvgl.label.update:
+          id: home_weather_now
+          text:
+            format: "%.1f°"
+            args: [ 'x' ]
+      - lvgl.label.update:
+          id: time_temp
+          text:
+            format: "%.1f°"
+            args: [ 'x' ]
+    
+  - platform: homeassistant
+    entity_id: sensor.naver_weather_windspeed_1
+    name: naver weather windspeed
+    id: naver_weather_windspeed_1
+    on_value:
+      - lvgl.label.update:
+          id: home_weather_hum
+          text: 
+            format: "#47ACF5 습도# %.0f%% #02D109 %s풍# %.1f m/s"
+            args: [ 'id(naver_weather_humidity_1).state' , 'id(naver_weather_windbearing_1).state.c_str()', 'x']
+      - lvgl.label.update:
+          id: time_wind
+          text: 
+            format: "%.1fm/s"
+            args: [ 'x']

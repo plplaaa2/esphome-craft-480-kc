@@ -1,0 +1,26 @@
+sensor:
+# HA Energy Sensor
+  - platform: homeassistant
+    entity_id: $energy_sensor
+    id: energy_meter_power
+    name: energy meter power
+    accuracy_decimals: 1          
+    on_value:
+      - if:
+          condition:
+            - lambda: return id(energy_meter_power).state >= 2500;
+          then:
+            - lvgl.page.show: energy_page
+      - lvgl.label.update:
+          id: current_power_title
+          text:
+            format: "\U000F192C %.1fW"
+            args: [ 'x' ]
+      - lvgl.indicator.update:
+          id: grid_needle
+          value: !lambda return x * 10;
+      - lvgl.label.update:
+          id: grid_in_text
+          text:
+            format: "%.1f"
+            args: [ 'x' ]

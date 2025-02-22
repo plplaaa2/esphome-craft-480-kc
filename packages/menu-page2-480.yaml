@@ -1,0 +1,120 @@
+lvgl:
+  pages:
+    - id: menu_page2
+      widgets:
+        - obj:
+            x: 0
+            y: 27
+            align: TOP_LEFT          
+            bg_color: 0x000000
+            bg_opa: 30%
+            pad_top: 0
+            pad_bottom: 5
+            pad_left: 10
+            pad_right: 10
+            styles: time_style
+            width: 480
+            height: 453
+            widgets:
+              - button:
+                  width: 150
+                  height: 145
+                  align: TOP_MID
+                  styles: button_menu
+                  pad_all: 5
+                  on_click:
+                     - lvgl.page.show: climate_page
+                  widgets:
+                    - label:
+                        align: TOP_MID
+                        text: "\U000F0F54"    
+                        text_font: icon_font_100
+                    - label:
+                        align: BOTTOM_MID
+                        text: "에어컨"
+                        text_font: regular_25
+              - button:
+                  width: 150
+                  height: 145
+                  align: LEFT_MID
+                  styles: button_menu
+                  pad_all: 5
+                  on_click:
+                     - lvgl.page.show: radio_page
+                  widgets:
+                    - label:
+                        align: TOP_MID
+                        text: "\U000F0439"
+                        text_font: icon_font_100
+                    - label:
+                        align: BOTTOM_MID
+                        text: "라디오"  
+                        text_font: regular_25
+
+              - button:
+                  width: 150
+                  height: 145
+                  align: CENTER
+                  styles: button_menu
+                  pad_all: 5
+                  bg_color: 0xFF4400
+                  on_click:
+                     - lvgl.page.show: about_page
+                  widgets:
+                    - label:
+                        align: CENTER
+                        text: "\U000F07D0"    
+                        text_font: icon_font_100
+
+              - button:
+                  width: 150
+                  height: 145
+                  align: RIGHT_MID
+                  styles: button_menu
+                  pad_all: 5
+                  on_click:
+                     - lvgl.page.show: energy_page
+                  widgets:
+                    - label:
+                        align: TOP_MID
+                        text: "\U000F1903"    
+                        text_font: icon_font_100
+                    - label:
+                        align: BOTTOM_MID
+                        text: "에너지"
+                        text_font: regular_25
+              - button:
+                  width: 150
+                  height: 145
+                  align: BOTTOM_MID
+                  styles: button_menu
+                  pad_all: 5
+                  on_click:
+                    - lvgl.page.show: setting_page
+                  widgets:
+                    - label:
+                        align: TOP_MID
+                        text: "\U000F0493"    
+                        text_font: icon_font_100
+                    - label:
+                        align: BOTTOM_MID
+                        text: "설 정"
+                        text_font: regular_25
+              - button:
+                  width: 150
+                  height: 145
+                  align: BOTTOM_RIGHT
+                  styles: button_menu
+                  bg_color: 0xFF4400
+                  pad_all: 5
+                  on_click:
+                    - lvgl.page.show: menu_page
+                  widgets:
+                    - label:
+                        align: TOP_MID
+                        text: "\U000F17B2"
+                        text_font: icon_font_100
+                    - label:
+                        align: BOTTOM_MID
+                        text: "Back"  
+                        text_font: regular_25

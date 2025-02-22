@@ -1,0 +1,97 @@
+display:
+  - platform: st7701s
+    id: my_display
+    update_interval: never
+    auto_clear_enabled: false
+    data_rate: 2MHz
+    spi_mode: MODE3
+    color_order: RGB
+    invert_colors: false
+    dimensions:
+      width: 480
+      height: 480
+    cs_pin: 39
+    de_pin: 18
+    hsync_pin: 16
+    vsync_pin: 17
+    pclk_pin: 21
+    pclk_frequency: 12MHz
+    pclk_inverted: false
+    hsync_pulse_width: 8
+    hsync_front_porch: 10
+    hsync_back_porch: 20
+    vsync_pulse_width: 8
+    vsync_front_porch: 10
+    vsync_back_porch: 10
+    init_sequence:
+      - 1
+      # Custom sequences are an array, first byte is command, the rest are data.
+      - [0xFF, 0x77, 0x01, 0x00, 0x00, 0x10] # CMD2_BKSEL_BK0
+      - [0xCD, 0x00] # disable MDT flag
+    data_pins:
+      red:
+        - 11         # R1
+        - 12         # R2
+        - 13         # R3
+        - 14         # R4
+        - 0          # R5
+      green:
+        - 8          # G0
+        - 20         # G1
+        - 3          # G2
+        - 46         # G3
+        - 9          # G4
+        - 10         # G5 
+      blue:
+        - 4          # B1
+        - 5          # B2
+        - 6          # B3
+        - 7          # B4
+        - 15         # B5
+# 터치 스크린 설정
+touchscreen:
+  platform: gt911
+  transform:
+    mirror_x: false
+    mirror_y: false
+  id: my_touchscreen
+  display: my_display
+  on_touch:
+    - lambda: |-
+          ESP_LOGI("cal", "x=%d, y=%d, x_raw=%d, y_raw=%0d",
+              touch.x,
+              touch.y,
+              touch.x_raw,
+              touch.y_raw
+              );
+    - light.turn_on: backlight
+
+light:
+  - platform: monochromatic
+    output: backlight_pwm
+    id: backlight
+    name: "${name} Back Light"
+    restore_mode: RESTORE_AND_ON
+    on_turn_on: 
+      then:
+        - light.control: 
+            id: backlight
+            brightness: !lambda return id(backlight_brightness).state / 100;
+        - lvgl.resume:
+        
+    on_turn_off: 
+      then:
+        - lvgl.pause:
+        
+output:
+  - platform: ledc
+    id: backlight_pwm
+    pin: GPIO38
+    frequency: 1000Hz
+    min_power: 0.3
+    zero_means_zero: True
+    
+script:
+  - id: light_up
+    then:
+      - light.turn_on: backlight

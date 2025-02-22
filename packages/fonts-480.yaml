@@ -1,0 +1,112 @@
+# 폰트 설정
+font:
+  - file: "fonts/Roboto-Regular.woff"
+    id: regular_20
+    size: 20
+    bpp: 4
+    glyphs: ${allowed_characters}
+  - file: "fonts/Roboto-Bold.woff"
+    id: regular_25
+    size: 25
+    bpp: 4
+    glyphs: ${allowed_characters}
+    extras:
+      - file: 'fonts/materialdesignicons-webfont.ttf' # http://materialdesignicons.com/cdn/7.4.47/ 
+        glyphs: [     
+          "\U000F00DE",  # mdi:brightness-max
+          "\U000F00DF"   # mdi:brightness-min
+          ]   
+  - file: "fonts/Roboto-Bold.woff"
+    id: regular_40
+    size: 40
+    bpp: 4
+    glyphs: ${allowed_characters}     
+    extras:
+      - file: 'fonts/materialdesignicons-webfont.ttf' # http://materialdesignicons.com/cdn/7.4.47/ 
+        glyphs: [
+          "\U000F04DB",  # mdi:stop
+          "\U000F057E",  # mdi:volume-high
+          "\U000F057F",  # mdi:volume-low
+          "\U000F0581",  # mdi:volume-off
+          "\U000F04AE",  # mdi:skip-previous
+          "\U000F04AD"   # mdi:skip-next
+          ]   
+  - file: "fonts/Roboto-Regular.woff"
+    id: title_font
+    size: 18
+    bpp: 4
+    glyphs: ${weather_characters}
+    extras:
+      - file: 'fonts/materialdesignicons-webfont.ttf' # http://materialdesignicons.com/cdn/7.4.47/ 
+        glyphs: [
+          "\U000F05A9", # mdi:wifi
+          "\U000F16C5", # mdi:wifi-remove
+          "\U000F0335", # mdi:lightbulb
+          "\U000F001B", # mdi:air-conditioner
+          "\U000F192C"  # mdi:transmission-tower-export
+          ]            
+
+  - file: "fonts/Roboto-Regular.woff"
+    id: weather_20
+    size: 23
+    bpp: 4
+    glyphs: ${weather_characters}
+    extras:
+      - file: 'fonts/materialdesignicons-webfont.ttf' # http://materialdesignicons.com/cdn/7.4.47/ 
+        glyphs: [          
+          "\U000F059C", # mdi:weather-sunset-up
+          "\U000F059B", # mdi:weather-sunset-down
+          "\U000F054A", # mdi:umbrella
+          "\U000F17FF", # mdi:sun-wireless-outline
+          "\U000F0C16", # mdi:alpha-o-circle
+          "\U000F00B5", # mdi:blur          
+          "\U000F058E", # mdi:water-percent
+          "\U000F00B6"  # mdi:blur-linear
+          ]  
+  - file: "fonts/Roboto-Regular.woff"
+    id: weather_25
+    size: 25
+    bpp: 4
+    glyphs: ${weather_characters}
+  - file: "fonts/Roboto-Regular.woff"
+    id: weather_30
+    size: 30
+    bpp: 4
+    glyphs: ${weather_characters}
+    extras:
+      - file: 'fonts/materialdesignicons-webfont.ttf' # http://materialdesignicons.com/cdn/7.4.47/ 
+        glyphs: [          
+          "\U000F054A", # mdi:umbrella
+          "\U000F058E"  # mdi:water-percent
+          ]      
+  - file: "fonts/Roboto-Regular.woff"
+    id: weather_40
+    size: 35
+    bpp: 4    
+    glyphs: ${weather_characters}
+  - file: "fonts/Roboto-Regular.woff"
+    id: weather_60
+    size: 60
+    bpp: 4
+    glyphs: ${weather_characters}
+  - file: "fonts/Roboto-Regular.woff"
+    id: time_90
+    size: 90
+    bpp: 4
+    glyphs: ${weather_characters}
+  - file: "fonts/materialdesignicons-webfont.ttf"
+    id: icon_font_100
+    size: 100
+    bpp: 4
+    glyphs: [
+          "\U000F184C", # mdi:induction
+          "\U000F0769", # mdi:ceiling-light
+          "\U000F07EA", # mdi:rice
+          "\U000F0210", # mdi:fan
+          "\U000F0F54", # mdi:home-thermometer
+          "\U000F0439", # mdi:radio
+          "\U000F1903", # mdi:home-lightning-bolt
+          "\U000F07D0", # mdi:home-assistant
+          "\U000F17B2", # mdi:arrow-u-left-bottom-bold
+          "\U000F0493"  # mdi:cog
+          ]  

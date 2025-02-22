@@ -1,0 +1,575 @@
+sensor:            
+#미디어 센서
+  - platform: homeassistant
+    entity_id: $media_player
+    name: media_player
+    attribute: volume_level
+    id: media_player_volume
+    on_value:
+      - lvgl.label.update:
+          id: set_volume_text
+          text:
+            format: "Vol %.0f%%"
+            args: [ '(x * 100)' ]
+      - lvgl.slider.update:
+          id: set_volume
+          value: !lambda 'return (x * 100);'
+
+
+binary_sensor:
+#미디어 뮤트 센서
+  - platform: homeassistant
+    entity_id: $media_player
+    name: media_player_muted
+    attribute: is_volume_muted
+    id: media_player_is_volume_muted
+    on_state:
+      then:
+        if:
+          condition: 
+            - binary_sensor.is_off: media_player_is_volume_muted
+          then:
+            - lvgl.button.update:
+                id: media_player_mute
+                state:
+                  checked: false
+            - lvgl.label.update:
+                id: media_player_mute_icon
+                text: "\U000F0581"
+          else: 
+            - lvgl.button.update:
+                id: media_player_mute
+                state:
+                  checked: true
+            - lvgl.label.update:
+                id: media_player_mute_icon
+                text: "\U000F057E"
+
+select:
+  - platform: template
+    id: radio_select
+    name: "Radio Channel"
+    options:
+      - KBS COOL
+      - ITV
+      - MBC FM4U
+      - KBS CLASSIC
+      - CBS MUSIC
+      - YTN
+      - TBS
+      - MBC FM
+      - KBS 1
+      - CBS FM
+      - TBN
+      - SBS LOVE
+      - KBS HAPPY
+      - KBS 3
+      - EBS FM
+      - SBS POWER
+    optimistic: true
+    on_value:
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "KBS COOL");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data: 
+                  entity_id: $media_player
+                  media_content_id: $kbscool
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 891
+            - lvgl.label.update:
+                id: frequency_text
+                text: "89.1"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "ITV");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $itv
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 907
+            - lvgl.label.update:
+                id: frequency_text
+                text: "90.7"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "MBC FM4U");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $mbcfm4u
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 919
+            - lvgl.label.update:
+                id: frequency_text
+                text: "91.9"
+
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "KBS CLASSIC");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $KBSClassic
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 931
+            - lvgl.label.update:
+                id: frequency_text
+                text: "93.1"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "CBS MUSIC");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $CBSMusic
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 939
+            - lvgl.label.update:
+                id: frequency_text
+                text: "93.9"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "YTN");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $YTN
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 945
+            - lvgl.label.update:
+                id: frequency_text
+                text: "94.5"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "TBS");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $TBS
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 951
+            - lvgl.label.update:
+                id: frequency_text
+                text: "95.1"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "MBC FM");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $MBCFM
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 959
+            - lvgl.label.update:
+                id: frequency_text
+                text: "95.9"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "KBS 1");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $KBS1FM
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 973
+            - lvgl.label.update:
+                id: frequency_text
+                text: "97.3"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "CBS FM");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $CBSFM
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 981
+            - lvgl.label.update:
+                id: frequency_text
+                text: "98.1"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "TBN");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $TBN
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 1005
+            - lvgl.label.update:
+                id: frequency_text
+                text: "100.5"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "SBS LOVE");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:
+                  entity_id: $media_player
+                  media_content_id: $SBSLoveFM
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 1035
+            - lvgl.label.update:
+                id: frequency_text
+                text: "103.5"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "KBS HAPPY");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $EBSFM
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 1045
+            - lvgl.label.update:
+                id: frequency_text
+                text: "104.5"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "KBS 3");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $KBS3FM
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 1049
+            - lvgl.label.update:
+                id: frequency_text
+                text: "104.9"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "EBS FM");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $KBSHappyFM
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 1061
+            - lvgl.label.update:
+                id: frequency_text
+                text: "106.1"
+      - if:
+          condition:
+            lambda: 'return (id(radio_select).state == "SBS POWER");'
+          then:
+            - homeassistant.action:
+                action: media_player.play_media
+                data:  
+                  entity_id: $media_player
+                  media_content_id: $SBSPowerFM
+                  media_content_type: music
+            - lvgl.indicator.update:
+                id: frequency_needle
+                value: 1077
+            - lvgl.label.update:
+                id: frequency_text
+                text: "107.7"
+    
+      
+lvgl:
+  pages:
+# radio page                              
+    - id: radio_page
+      widgets:
+        - obj:
+            x: 0
+            y: 30
+            align: TOP_LEFT
+            styles: card
+            width: 480
+            height: 450
+            widgets:
+              - button:
+                  x: 20
+                  y: 20
+                  align: TOP_LEFT
+                  width: 80
+                  height: 50
+                  styles: card
+                  outline_width: 1
+                  widgets:
+                    - label:
+                        align: CENTER
+                        text: "<"
+                        text_font: regular_20
+                  on_press:
+                    then:
+                      - lvgl.page.show: menu_page2
+              - label:
+                  x: -20
+                  y: 20
+                  align: TOP_RIGHT
+                  text: "FM 라디오"
+                  text_font: regular_40
+                  
+              - meter:
+                  x: -80
+                  y: 15
+                  align: RIGHT_MID
+                  height: 320
+                  width: 320
+                  styles: card
+                  border_opa: TRANSP
+                  text_font: regular_20
+                  scales:
+                  # 바깥 눈금
+                    - range_from: 880   # 눈금 시작
+                      range_to: 1080    # 눈금 끝
+                      angle_range: 180  # 눈금 각도
+                      rotation: 180     # 눈금 회전각
+                      indicators:
+                        - line:  # 바늘
+                            id: frequency_needle
+                            width: 3  
+                            color: 0xFF0000  # 바늘 색깔
+                            r_mod: 0  # 바늘 길이
+                        - tick_style: # 눈금 스타일  
+                            start_value: 88   #눈금 시작값
+                            end_value: 108    #눈금 끝값
+                            width: 2   # 바늘 두께
+                            color_start: 0xFFFFFF #FF0000
+                            color_end: 0xFFFFFF #0000FF
+                     #안쪽 숫자
+                    - range_from: 88  #숫자 시작
+                      range_to: 108   #숫자 끝
+                      angle_range: 180  #숫자 각도
+                      rotation: 180     # 숫자 회전각
+                      ticks:         # 눈금 
+                        width: 1     # 눈금 두께
+                        count: 21    # 눈금 갯수
+                        length: 10   # 눈금 길이
+                        major:       # 대눈금
+                          stride: 2  # 대눈금 간격
+                          length: 12 # 대눈금 길이
+                          width: 3   # 대눈금 두께
+                          color: 0x0000FF  # 대눈금 색
+                          label_gap: 20  # 눈금과 숫자사이 간격
+                  widgets:
+                    - obj:
+                        height: 180
+                        width: 180
+                        align: CENTER
+                        styles: card
+                        radius: 75
+                        widgets:
+                          - label:
+                              y: -40
+                              align: CENTER
+                              id: frequency_text
+                              text: ---.-
+                              text_align: RIGHT
+                              text_font: weather_60
+                          - label:
+                              x: 60
+                              align: CENTER
+                              text: "Mhz"
+                              text_font: regular_25
+                              text_color: 0xE5E5E5
+                              text_align: RIGHT
+
+              - label: 
+                  x: 30
+                  y: -122
+                  align: BOTTOM_LEFT
+                  text: "\U000F057F"
+                  text_font: regular_40
+                  text_color: 0xE5E5E5
+                  on_click:
+                    then:
+                      - homeassistant.action:
+                          action: media_player.volume_set
+                          data: 
+                            entity_id: $media_player
+                            volume_level: !lambda 'return id(media_player_volume).state - 0.01;'
+                  
+              - label: 
+                  x: -30
+                  y: -122
+                  align: BOTTOM_RIGHT
+                  text: "\U000F057E"
+                  text_font: regular_40
+                  text_color: 0xE5E5E5
+                  on_click:
+                    then:
+                      - homeassistant.action:
+                          action: media_player.volume_set
+                          data: 
+                            entity_id: $media_player
+                            volume_level: !lambda 'return id(media_player_volume).state + 0.01;'
+
+              - slider:
+                  y: -140
+                  align: BOTTOM_MID
+                  width: 300
+                  height: 20
+                  id: set_volume
+                  min_value: 0
+                  max_value: 100
+                  on_release:
+                    then:
+                      - homeassistant.action:
+                          action: media_player.volume_set
+                          data: 
+                            entity_id: $media_player
+                            volume_level: !lambda 'return (x / 100);'
+              - label:
+                  y: -95
+                  align: BOTTOM_MID
+                  id: set_volume_text
+                  text: "Vol --%"
+                  text_font: weather_30
+                  text_color: 0xE5E5E5
+                
+              - button:
+                  x: 50
+                  y: -30
+                  align: BOTTOM_LEFT
+                  width: 60
+                  height: 60
+                  styles: card
+                  radius: 75
+                  outline_width: 1
+                  on_click:
+                    - select.previous:
+                        id: radio_select
+                        cycle: true
+                  widgets:
+                    - label:
+                        y: 5
+                        text: "\U000F04AE"
+                        align: CENTER
+                        text_font: regular_40
+              - button:
+                  x: 50
+                  y: -30
+                  align: BOTTOM_MID
+                  width: 60
+                  height: 60
+                  styles: card
+                  radius: 75
+                  outline_width: 1
+                  on_click:
+                    - homeassistant.action:
+                        action: media_player.media_stop
+                        data: 
+                          entity_id: $media_player 
+                  widgets:
+                    - label:
+                        y: 5
+                        text: "\U000F04DB"
+                        align: CENTER
+                        text_font: regular_40
+              - button:
+                  x: -50
+                  y: -30
+                  id: media_player_mute
+                  align: BOTTOM_MID
+                  width: 60
+                  height: 60
+                  styles: card
+                  checkable: true
+                  radius: 75
+                  outline_width: 1
+                  on_click:
+                    - if:
+                        condition: 
+                          binary_sensor.is_off: media_player_is_volume_muted
+                        then:
+                          - homeassistant.action:
+                              action: media_player.volume_mute
+                              data:  
+                                entity_id: $media_player
+                                is_volume_muted: "true"
+                        else:
+                          - homeassistant.action:
+                              action: media_player.volume_mute
+                              data:  
+                                entity_id: $media_player
+                                is_volume_muted: "false"
+                  widgets:
+                    - label:
+                        y: 5
+                        text: "\U000F0581"
+                        id: media_player_mute_icon
+                        align: CENTER
+                        text_font: regular_40
+              - button:
+                  x: -50
+                  y: -30
+                  align: BOTTOM_RIGHT
+                  width: 60
+                  height: 60
+                  styles: card
+                  radius: 75
+                  outline_width: 1
+                  on_click:
+                    - select.next:
+                        id: radio_select
+                        cycle: true
+                  widgets:
+                    - label:
+                        y: 5
+                        text: "\U000F04AD"
+                        align: CENTER
+                        text_font: regular_40

@@ -1,0 +1,52 @@
+lvgl:
+  pages:
+    - id: about_page
+      widgets:
+      - obj:
+          x: 0
+          y: 30
+          align: TOP_LEFT
+          styles: card
+          width: 480
+          height: 450
+          widgets:
+            - button:
+                x: 20
+                y: 20
+                align: TOP_LEFT
+                width: 80
+                height: 50
+                styles: card
+                radius: 73
+                outline_width: 1
+                widgets:
+                  - label:
+                      align: CENTER
+                      text: "<"
+                      text_font: regular_20
+                on_press:
+                  then:
+                    - lvgl.page.show: menu_page2
+            - label:
+                x: -20
+                y: 20
+                align: TOP_RIGHT
+                height: 50
+                styles: time_style
+                text: "About"
+                text_font: weather_40
+
+            - label:
+                align: CENTER
+                height: 50
+                styles: time_style
+                text: "ESPhome Craft 480 KC"
+                text_font: weather_40
+                
+            - label:
+                y: 100
+                align: CENTER
+                height: 50
+                styles: time_style
+                text: "Version 1.0"
+                text_font: weather_40

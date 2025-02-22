@@ -1,0 +1,148 @@
+lvgl:
+# 전체 위젯 테마  
+  theme:
+    slider:
+      border_width: 1
+      border_opa: 15%
+      bg_color: 0xcccaca
+      bg_opa: 15%
+      pad_all: 3
+      indicator:
+        bg_color: 0x2F8CD8
+        bg_opa: COVER
+        height: 20
+      knob:
+        bg_color: 0xFFFFFF  #2F8CD8
+        bg_opa: COVER
+        width: 35
+        border_color: 0x0077b3
+        border_width: 5
+        outline_width: 1 
+    arc:
+      bg_color: 0
+      bg_opa: TRANSP
+      arc_color: 0x111111
+      arc_opa: COVER
+      arc_width: 30
+      indicator:
+        bg_color: 0x2F8CD8
+        bg_opa: COVER        
+        arc_width: 30
+      knob:
+        bg_color: 0xFFFFFF
+        bg_opa: COVER
+        border_color: 0x4EAFFC
+        border_width: 10
+        outline_width: 2
+    buttonmatrix:
+      bg_opa: TRANSP
+      border_color: 0x0077b3
+      border_width: 0
+      text_color: 0xFFFFFF
+      pad_all: 0
+      items: # set all your buttonmatrix buttons to use your custom defined styles and font
+        bg_color: 0x2F8CD8
+        bg_grad_color: 0x005782
+        bg_grad_dir: VER
+        bg_opa: COVER
+        border_color: 0x0077b3
+        border_width: 1
+        text_color: 0xFFFFFF
+        pressed:
+          bg_color: 0x006699
+          bg_grad_color: 0x00334d
+        checked:
+          bg_color: 0x1d5f96
+          bg_grad_color: 0x03324A
+          text_color: 0x005580      
+
+# 개별 스타일 사전정의
+  style_definitions:
+    - id: title_bar
+      text_font: title_font
+      text_color: 0xD5D5D5
+      bg_color: 0
+      radius: 0
+      pad_all: 0
+      border_width: 0
+      outline_width: 0
+    - id: time_style
+      text_color: 0xD5D5D5
+      bg_opa: TRANSP
+      radius: 5
+      border_color: 0xE9E9E9
+      border_width: 0
+      #border_opa:
+      pad_all: 0
+      shadow_width: 0
+      shadow_opa: TRANSP
+    - id: card
+      text_color: 0xD5D5D5
+      bg_color: 0x222222
+      bg_opa: COVER
+      radius: 20
+      outline_width: 0
+      border_width: 0
+      #border_opa:
+      pad_all: 0 
+    - id: weather_style
+      text_color: 0xD5D5D5
+      bg_color: 0
+      bg_opa: TRANSP
+      outline_width: 0
+      border_width: 0
+      #border_opa:
+      radius: 0
+      pad_all: 0
+    - id: meter_style
+      text_color: 0xD5D5D5
+      bg_color: 0x222222
+      bg_opa: COVER
+      radius: 10
+      outline_width: 0
+      border_width: 0
+      #border_opa:
+      pad_all: 0      
+    - id: button_light
+      bg_color: 0xCCCCCC
+      bg_grad_color: 0xFF4400
+      bg_grad_dir: HOR
+      border_width: 8
+      border_color: 0x222222
+      border_opa: 50%
+      outline_width: 1
+    - id: button_menu
+      text_color: 0xD5D5D5
+      bg_color: 0x222222
+      bg_opa: COVER
+      radius: 20
+      pad_all: 5
+    - id: button_checked
+      bg_color: 0xFF4400
+      bg_opa: COVER
+      text_color: 0xD5D5D5
+      radius: 20
+      pad_all: 5 
+    - id: menu_button
+      radius: 40      
+      text_font: regular_25
+      text_align: CENTER
+      bg_color: 0x2F8CD8
+      bg_grad_color: 0x0460BD
+      bg_grad_dir: VER
+      border_width: 5
+      border_color: 0x1e84eb
+      border_opa: 50%
+      outline_width: 1
+    - id: tab_theme
+      border_width: 0
+      border_color: 0x0077b3
+      border_opa: TRANSP
+      bg_color: 0x2F8CD8
+      bg_grad_color: 0x005782                  
+      bg_grad_dir: VER
+      pad_all: 0                  
+      width: 100%
+      height: 50
+      text_font: regular_25
+      text_align: CENTER

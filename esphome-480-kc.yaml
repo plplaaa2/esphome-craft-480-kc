@@ -1,0 +1,182 @@
+substitutions:
+  name: "esphome-480-kc"  #소문자만
+  device_description: ESPhome Craft 480 Kitchen Version
+  
+  # Switch
+  light_switch: your entity #HA 스위치 entity id
+  induction_switch: your entity #HA 스위치 entity id
+  rice_switch: your entity #HA 스위치 entity id  
+  fan_switch: your entity
+  
+  # Sensors
+  indoor_temp: your entity # HA 실내 온도 센서 entity id
+  indoor_hum: your entity # HA 실내 습도 센서 entity id  
+  energy_sensor: your entity # HA 에너지미터 entity id  
+  presence_sensor: your entity # 주방 동작감지센서 entity id  
+
+  #devices
+  aircon_id: your entity #HA 에어컨 entity id
+  media_player: media_player.entity
+  
+  #radio channel
+  kbscool: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  itv: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  mbcfm4u: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  KBSClassic: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  CBSMusic: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  YTN: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  TBS: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  MBCFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  KBS1FM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  CBSFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  TBN: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  SBSLoveFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  EBSFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  KBS3FM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  KBSHappyFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  SBSPowerFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+
+  # location
+  latitude: "37" # 집의 위도
+  longitude: "126" # 집의 경도
+  
+  # Characters
+  weather_characters: "
+    !#%'()+,-./0123456789:;<>?@ABCDEFGHIJKLMNOPQRSTUVWYZ[]_abcdefghijklmnopqrst\
+    uvwxyz{|}°²³µ오전후시분초년월화목금토요일맑음흐림대체로비뇌우안개폭호구름많동서남북알수없매좋높보통쾌적나쁨최악눈내위험자외선존미세먼지풍\
+    데이터온습도실낮"
+  allowed_characters: "
+    !#%'()+,-./0123456789:;<>?@ABCDEFGHIJKLMNOPQRSTUVWYZ[]_abcdefghijklmnopqrst\
+    uvwxyz{|}°²³µ실내외거서재주방다용도화장안베란우좌측전체에어컨가습창문생시볼륨로비간접보조블라인드현설버티컬온관중등냉고송명자수동난풍제꺼\
+    짐강약정기날씨디오메뉴너지소량사월당태양광발모일통계단남은필터취침켜공청닫힘열림면밝대절복귀밥솥덕션후홈팬"
+
+packages:
+  #Base
+  base: !include packages/base-480.yaml
+  display: !include packages/st7701s-480.yaml
+  fonts: !include packages/fonts-480.yaml
+  style: !include packages/styles-480.yaml
+  setting: !include packages/setting-480.yaml
+  image: !include packages/weather-img.yaml
+  #Sensors
+  naver: !include packages/naver-480.yaml
+  indoor: !include packages/indoor-480.yaml
+  aircon: !include packages/aircon-480.yaml
+  energy: !include packages/energy-480.yaml
+
+  #Devices
+  switch: !include packages/switch-480.yaml
+  #Lvgl Pages
+  menu-page: !include packages/menu-page-480.yaml
+  menu-page2: !include packages/menu-page2-480.yaml
+  weather-page: !include packages/weather-page-480.yaml
+  climate-page: !include packages/climate-page-480.yaml
+  radio-page: !include packages/radio-480.yaml
+  energy-page: !include packages/energy-page-480.yaml
+  setting-page: !include packages/setting-page-480.yaml
+  about_page: !include packages/about-page.yaml
+
+
+script:
+  # Time update  
+  - id: time_update
+    then:
+      - lvgl.label.update:
+          id: time_time
+          text: !lambda |-
+            static char time_buf[17];
+            auto now = id(time_comp).now();            
+            int hour_12 = now.hour % 12;
+            if (hour_12 == 0) {
+                hour_12 = 12; // 12 AM/PM should be displayed as 12, not 0
+            }
+            snprintf(time_buf, sizeof(time_buf), "%2d:%02d", hour_12, now.minute );
+            return time_buf;
+  - id: ampm_update
+    then:
+      - lvgl.label.update:
+          id: time_ampm
+          text: !lambda |-
+            static char time_buf[10];
+            auto now = id(time_comp).now();
+            bool is_pm = now.hour >= 12;
+            snprintf(time_buf, sizeof(time_buf), "%s", is_pm ? "오후" : "오전");
+            return std::string(time_buf).c_str();
+  - id: date_update
+    then:
+      - lvgl.label.update:
+          id: time_date
+          text: !lambda |-
+            static char date_buf[30];
+            auto now = id(time_comp).now();
+            const char* weekdays[] = {"일", "월", "화", "수", "목", "금", "토"};
+            snprintf(date_buf, sizeof(date_buf), "%04d년 %02d월 %02d일 %s요일", now.year, now.month, now.day_of_month, weekdays[now.day_of_week - 1]);
+            return date_buf;
+
+lvgl:
+  # 기본 스타일  
+  bg_color: 0
+  text_font: regular_20
+  # 상단 타이틀
+  top_layer:
+    widgets:
+      - obj:
+          y: 0
+          width: 240
+          height: 27
+          styles: title_bar
+          align: TOP_LEFT
+          layout:
+            type: FLEX
+            flex_flow: ROW
+            flex_align_main: START
+          widgets:
+            - label:
+                text: "󰀛"
+                id: aircon_run
+                hidden: true
+                text_align: LEFT
+            - label:
+                text: "󰾒"
+                id: boiler_run
+                hidden: true
+                text_align: LEFT
+            - label:
+                text: "󱂙"
+                id: humidifier_run
+                hidden: true
+                text_align: LEFT
+            - label:
+                text: "󰵄"
+                id: purifier_run
+                hidden: true
+                text_align: LEFT
+      - obj:
+          y: 0
+          width: 240
+          height: 25
+          styles: title_bar
+          align: TOP_RIGHT
+          layout:
+            type: FLEX
+            flex_flow: ROW
+            flex_align_main: END
+          widgets:
+            - label:
+                text: "󱤬 0 W"
+                id: current_power_title
+                text_align: RIGHT
+            - label:
+                text: "HA"
+                id: ha_connected_title
+                hidden: true
+                text_align: RIGHT
+            - label:
+                text: "󰖩"
+                id: wifi_connected_title
+                hidden: true
+                text_align: RIGHT
+            - label:
+                text: "󱛅"
+                id: wifi_disconnected_title
+                text_align: RIGHT

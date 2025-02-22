@@ -1,0 +1,69 @@
+switch:
+# 홈어시스턴트 조명
+  - platform: homeassistant
+    entity_id: $light_switch
+    name: light_switch
+    id: light_switch
+    on_turn_on:
+      then:
+        - lvgl.widget.update:
+            id: light_switch_button
+            state:
+              checked: true
+    on_turn_off:
+      then:
+        - lvgl.widget.update:
+            id: light_switch_button
+            state:
+              checked: false
+
+  - platform: homeassistant
+    entity_id: $fan_switch
+    name: fan_switch
+    id: fan_switch
+    on_turn_on:
+      then:
+        - lvgl.widget.update:
+            id: fan_switch_button
+            state:
+              checked: true
+    on_turn_off:
+      then:
+        - lvgl.widget.update:
+            id: fan_switch_button
+            state:
+              checked: false
+  - platform: homeassistant
+    entity_id: $induction_switch
+    name: induction_switch
+    id: ind_switch
+    on_turn_on:
+      then:
+        - lvgl.widget.update:
+            id: ind_switch_button
+            state:
+              checked: true
+    on_turn_off:
+      then:
+        - lvgl.widget.update:
+            id: ind_switch_button
+            state:
+              checked: false    
+
+  - platform: homeassistant
+    entity_id: $rice_switch
+    name: rice_switch
+    id: rice_switch    
+    on_turn_on:
+      then:
+        - lvgl.widget.update:
+            id: rice_switch_button
+            state:
+              checked: true
+    on_turn_off:
+      then:
+        - lvgl.widget.update:
+            id: rice_switch_button
+            state:
+              checked: false            
+             

@@ -1,0 +1,30 @@
+sensor:
+#HA Sensors
+#실내 센서
+  - platform: homeassistant
+    entity_id: $indoor_temp
+    name: indoor_temperature
+    id: indoor_temperature
+    on_value:
+      - lvgl.indicator.update:
+          id: temp_needle
+          value: !lambda return x * 10;
+      - lvgl.label.update:
+          id: temp_in_text
+          text:
+            format: "%.1f°"
+            args: [ 'x' ]
+
+  - platform: homeassistant
+    entity_id: $indoor_hum
+    name: indoor_humidity
+    id: indoor__humidity
+    on_value:
+      - lvgl.indicator.update:
+          id: hum_needle
+          value: !lambda return x;
+      - lvgl.label.update:
+          id: hum_in_text
+          text:
+            format: "%.0f%%"
+            args: [ 'x' ]     

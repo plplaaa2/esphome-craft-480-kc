@@ -1,0 +1,57 @@
+image:
+#날씨 아이콘
+  - file: "weather/sunny.png"
+    id: sunny
+    type: RGB565
+    resize: 150x150
+    transparency: alpha_channel
+  - file: "weather/cloudy.png"
+    id: cloudy
+    type: RGB565
+    resize: 150x150
+    transparency: alpha_channel 
+  - file: "weather/clearnight.png"
+    id: clearnight
+    type: RGB565
+    resize: 150x150
+    transparency: alpha_channel 
+  - file: "weather/hail.png"
+    id: hail
+    type: RGB565
+    resize: 150x150
+    transparency: alpha_channel
+  - file: "weather/lightning.png"
+    id: lightning
+    type: RGB565
+    resize: 150x150
+    transparency: alpha_channel
+  - file: "weather/nightpartlycloud.png"
+    id: nightpartlycloud
+    type: RGB565
+    resize: 150x150
+    transparency: alpha_channel
+  - file: "weather/partlycloud.png"
+    id: partlycloud
+    type: RGB565
+    resize: 150x150
+    transparency: alpha_channel
+  - file: "weather/scloudy.png"
+    id: scloud
+    type: RGB565
+    resize: 150x150
+    transparency: alpha_channel   
+  - file: "weather/pouring.png"
+    id: pouring
+    type: RGB565
+    resize: 150x150
+    transparency: alpha_channel
+  - file: "weather/rainy.png"
+    id: rainy
+    type: RGB565
+    resize: 150x150
+    transparency: alpha_channel
+  - file: "weather/snowy.png"
+    id: snowy
+    type: RGB565
+    resize: 150x150
+    transparency: alpha_channel

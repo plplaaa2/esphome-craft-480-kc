@@ -1,0 +1,82 @@
+binary_sensor: 
+  - platform: homeassistant
+    entity_id: $presence_sensor
+    id: presence_sensor
+    name: presence_sensor
+    on_press:
+      then:
+        - light.turn_on: backlight
+        - if:
+            condition:
+              and:
+                - switch.is_on: light_auto_sw
+                - binary_sensor.is_on: presence_sensor
+            then:
+              - switch.turn_on: light_switch
+    on_release:
+      then:
+        - if: 
+            condition:
+              - light.is_on: backlight
+            then:
+              - light.turn_off: backlight
+        - if:
+            condition:
+              and:
+                - switch.is_on: light_auto_sw
+                - binary_sensor.is_off: presence_sensor
+            then:
+              - switch.turn_off: light_switch  
+
+number:
+  - platform: lvgl
+    name: "${name} Menu Return Time"
+    widget: return_spin
+    id: return_timeout
+    unit_of_measurement: "s"
+    mode: box
+
+  - platform: template
+    name: "${name} BackLight Brightness"
+    optimistic: true
+    id: backlight_brightness
+    unit_of_measurement: "%"
+    initial_value: 50
+    restore_value: true
+    min_value: 5
+    max_value: 100
+    step: 5
+    mode: box
+    on_value: 
+      then:
+        lvgl.slider.update: 
+          id: slide_brightness
+          value: !lambda 'return x;'
+             
+switch:
+  - platform: template
+    id: light_auto_sw
+    name: KC Light Automation
+    optimistic: true
+    restore_mode: RESTORE_DEFAULT_OFF
+    turn_on_action:
+      - lvgl.switch.update:
+          id: switch_auto_light
+          state:
+            checked: true
+    turn_off_action:
+      - lvgl.switch.update:
+          id: switch_auto_light
+          state:
+            checked: false
+
+lvgl:
+# 대기중 자동화
+  on_idle:
+    - timeout: !lambda return id(return_timeout).state * 1000;
+      then:
+        if: 
+          condition:
+            - light.is_on: backlight
+          then:
+            - lvgl.page.show: menu_page

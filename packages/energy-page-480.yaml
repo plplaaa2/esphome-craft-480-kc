@@ -1,0 +1,128 @@
+lvgl:
+  pages:
+    - id: energy_page
+      widgets:
+      - obj:
+          x: 0
+          y: 30
+          align: TOP_LEFT
+          styles: card
+          width: 480
+          height: 450
+          widgets:
+            - button:
+                x: 20
+                y: 20
+                align: TOP_LEFT
+                width: 80
+                height: 50
+                styles: card
+                radius: 73
+                outline_width: 1
+                widgets:
+                  - label:
+                      align: CENTER
+                      text: "<"
+                      text_font: regular_20
+                on_press:
+                  then:
+                    - lvgl.page.show: menu_page2
+            - label:
+                x: -20
+                y: 20
+                align: TOP_RIGHT
+                height: 50
+                styles: time_style
+                text: "에너지"
+                text_font: regular_40
+            - obj:
+                align: BOTTOM_MID
+                width: 350
+                height: 350
+                styles: card
+                radius: 72
+                widgets:
+                  - meter:
+                      x: 0
+                      y: -5
+                      width: 320
+                      height: 320
+                      border_width: 0
+                      bg_opa: TRANSP
+                      align: CENTER
+                      scales:
+                        - range_from: 0
+                          range_to: 40000
+                          angle_range: 250
+                          ticks:
+                            count: 0
+                          indicators:
+                            - line:
+                                id: grid_needle
+                                width: 8
+                                color: 0xE5E5E5
+                                r_mod: 20
+                                value: "0"
+                            - arc: 
+                                color: 0x005AC7
+                                r_mod: 10 
+                                width: 40
+                                start_value: 0
+                                end_value: 5000
+                            - arc: 
+                                color: 0x0088C7
+                                r_mod: 10
+                                width: 40
+                                start_value: 5001
+                                end_value: 10000
+                            - arc: 
+                                color: 0x11C700
+                                r_mod: 10
+                                width: 40
+                                start_value: 10001
+                                end_value: 15000
+                            - arc: 
+                                color: 0xFF8C00
+                                r_mod: 10
+                                width: 40
+                                start_value: 15001
+                                end_value: 25000
+                            - arc: 
+                                color: 0xFF0000
+                                r_mod: 10
+                                width: 40
+                                start_value: 25001
+                                end_value: 40000
+                  - obj:
+                      height: 200
+                      width: 200
+                      radius: 100
+                      align: CENTER
+                      border_width: 0
+                      bg_color: 0x222222
+                      pad_all: 0
+                  - label:
+                      x: 0
+                      y: -10
+                      align: CENTER
+                      text: "----"
+                      id: grid_in_text
+                      text_font: weather_60
+                      text_color: 0xE5E5E5
+                      text_align: CENTER
+                  - label:
+                      x: 0
+                      y: 70
+                      align: CENTER
+                      text: "W"
+                      text_font: weather_60
+                      text_color: 0xE5E5E5
+                      text_align: CENTER
+                  - label:
+                      x: 0
+                      y: -15
+                      align: BOTTOM_MID
+                      text: "소비량"
+                      text_font: regular_40
+                      text_color: 0xE5E5E5
+                      text_align: CENTER
