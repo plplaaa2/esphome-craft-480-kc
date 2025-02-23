@@ -70,23 +70,19 @@ lvgl:
                                 text_font: regular_25
                       - obj:
                           x: -5
-                          y: 100
+                          y: 105
                           align: TOP_RIGHT
                           width: 55%
-                          height: 55
+                          height: 35
                           styles: time_style
-                          text_font: regular_25
-                          layout:
-                            type: FLEX
-                            flex_flow: ROW
-                            flex_align_main: END
+                          outline_width: 1
                           widgets:
                             - label:
+                                align: LEFT_MID
                                 text: "\U000F00DF"
                                 text_font: regular_25
-                            - slider:
-                                y: 10
-                                align: BOTTOM_MID
+                            - slider:                                
+                                align: CENTER
                                 id: slide_brightness
                                 width: 70%
                                 height: 20
@@ -103,8 +99,10 @@ lvgl:
                                         id: backlight_brightness
                                         value: !lambda return x;
                             - label:
+                                align: RIGHT_MID
                                 text: "\U000F00DE"                                
                                 text_font: regular_25
+                                
                       - obj:
                           x: 5
                           y: 150
@@ -125,12 +123,9 @@ lvgl:
                           height: 50
                           styles: time_style
                           text_font: regular_25
-                          layout:
-                            type: FLEX
-                            flex_flow: ROW
-                            flex_align_main: END
                           widgets:
                             - button:
+                                align: LEFT_MID
                                 height: 50
                                 width: 50
                                 styles: menu_button
@@ -144,7 +139,7 @@ lvgl:
                                 width: 100
                                 height: 50
                                 id: return_spin
-                                align: BOTTOM_MID
+                                align: CENTER
                                 text_font: regular_20
                                 text_align: CENTER
                                 range_from: 10
@@ -158,13 +153,14 @@ lvgl:
                             - button:
                                 height: 50
                                 width: 50
+                                align: RIGHT_MID
                                 styles: menu_button
                                 on_click:
                                   - lvgl.spinbox.increment: return_spin
                                 widgets:
                                   - label:
                                       text: "+"
-                                      align: CENTER 
+                                      align: CENTER
                                       
                       - obj:
                           x: 5
