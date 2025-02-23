@@ -140,21 +140,7 @@ lvgl:
                 id: aircon_run
                 hidden: true
                 text_align: LEFT
-            - label:
-                text: "󰾒"
-                id: boiler_run
-                hidden: true
-                text_align: LEFT
-            - label:
-                text: "󱂙"
-                id: humidifier_run
-                hidden: true
-                text_align: LEFT
-            - label:
-                text: "󰵄"
-                id: purifier_run
-                hidden: true
-                text_align: LEFT
+
       - obj:
           y: 0
           width: 240
