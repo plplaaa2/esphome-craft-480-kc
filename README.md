@@ -45,22 +45,22 @@ substitutions:
   media_player: media_player.entity #HA KC media player entity id
   
   #Radio channel, For Korea User,
-  kbscool: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  itv: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  mbcfm4u: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  KBSClassic: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  CBSMusic: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  YTN: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  TBS: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  MBCFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  KBS1FM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  CBSFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  TBN: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  SBSLoveFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  EBSFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  KBS3FM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  KBSHappyFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
-  SBSPowerFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+  kbscool: "https://your_radio_address"
+  itv: "https://your_radio_address"
+  mbcfm4u: "https://your_radio_address"
+  KBSClassic: "https://your_radio_address"
+  CBSMusic: "https://your_radio_address"
+  YTN: "https://your_radio_address"
+  TBS: "https://your_radio_address"
+  MBCFM: "https://your_radio_address"
+  KBS1FM: "https://your_radio_address"
+  CBSFM: "https://your_radio_address"
+  TBN: "https://your_radio_address"
+  SBSLoveFM: "https://your_radio_address"
+  EBSFM: "https://your_radio_address"
+  KBS3FM: "https://your_radio_address"
+  KBSHappyFM: "https://your_radio_address"
+  SBSPowerFM: "https://your_radio_address"
 
   # location
   latitude: "37" # your home latitude
