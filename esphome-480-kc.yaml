@@ -51,7 +51,7 @@ substitutions:
     데이터온습도실낮"
   allowed_characters: "
     !#%'()+,-./0123456789:;<>?@ABCDEFGHIJKLMNOPQRSTUVWYZ[]_abcdefghijklmnopqrst\
-    uvwxyz{|}°²³µ실내외거서재주냉안방에어컨시설온관중등고송조명자수동난풍제꺼\
+    uvwxyz{|}°²³µ실내외거서재주냉안방에어컨시설온도관중등고송조명자수동난풍제꺼\
     짐강약정가습전기날씨비라디오메뉴너지소량사월당발모일켜공청화면밝대절복귀밥솥인덕션후드홈팬감리작멈춤"
 
 packages:
