@@ -19,7 +19,7 @@ You have to find and use this part on your own.
 2. Weather. Clockwork
 3. Air conditioning control
 4. Play the radio
-5. Power consumption warning
+5. Power consumption monitoring & warning
 
 **User's Guide**
 
