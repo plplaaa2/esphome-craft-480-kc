@@ -27,7 +27,7 @@ lvgl:
                     checked: 
                       text_color: 0xE5E5E5
                 tabs:
-                  - name: "Display"
+                  - name: "설   정정"
                     id: display_set
                     widgets:
                       - button:
@@ -53,7 +53,7 @@ lvgl:
                           align: TOP_RIGHT
                           height: 50
                           styles: time_style
-                          text: "Display"
+                          text: "설 정"
                           text_font: regular_40
                           
                       - obj:
