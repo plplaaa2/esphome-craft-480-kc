@@ -1,6 +1,6 @@
 lvgl:
   pages:
-    - id: menu_page2
+    - id: menu_page
       widgets:
         - obj:
             x: 0
