@@ -46,7 +46,7 @@ lvgl:
                                 text_font: regular_20
                           on_press:
                             then:
-                              - lvgl.page.show: menu_page2  
+                              - lvgl.page.show: menu_page
                       - label:
                           x: -5
                           y: 5
@@ -85,7 +85,7 @@ lvgl:
                                 text: "\U000F00DF"
                                 text_font: regular_25
                             - slider:
-                                y: -5
+                                y: 10
                                 align: BOTTOM_MID
                                 id: slide_brightness
                                 width: 70%
@@ -115,7 +115,7 @@ lvgl:
                           widgets:
                             - label:
                                 align: BOTTOM_LEFT
-                                text: "메뉴 복귀(S)"
+                                text: "메인 복귀(S)"
                                 text_font: regular_25
                       - obj:
                           x: -5
