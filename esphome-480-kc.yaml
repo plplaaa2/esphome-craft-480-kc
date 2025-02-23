@@ -67,8 +67,8 @@ packages:
   #Devices
   switch: !include packages/switch-480.yaml
   #Lvgl Pages
+  main-page: !include packages/main-page-480.yaml
   menu-page: !include packages/menu-page-480.yaml
-  menu-page2: !include packages/menu-page2-480.yaml
   weather-page: !include packages/weather-page-480.yaml
   climate-page: !include packages/climate-page-480.yaml
   radio-page: !include packages/radio-480.yaml
