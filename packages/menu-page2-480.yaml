@@ -108,7 +108,7 @@ lvgl:
                   bg_color: 0xFF4400
                   pad_all: 5
                   on_click:
-                    - lvgl.page.show: menu_page
+                    - lvgl.page.show: main_page
                   widgets:
                     - label:
                         align: TOP_MID
