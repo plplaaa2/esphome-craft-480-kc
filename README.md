@@ -18,7 +18,7 @@ You have to find and use this part on your own.
 1. Kitchen Device Control
 2. Weather. Clockwork
 3. Air conditioning control
-4. Play the radio
+4. Play the radio (If you have a media player)
 5. Power consumption monitoring & warning
 
 **User's Guide**
