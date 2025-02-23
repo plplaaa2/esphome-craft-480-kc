@@ -79,4 +79,4 @@ lvgl:
           condition:
             - light.is_on: backlight
           then:
-            - lvgl.page.show: menu_page
+            - lvgl.page.show: main_page
