@@ -1,24 +1,24 @@
 substitutions:
-  name: "esphome-480-kc"  #소문자만
+  name: "esphome-480-kc"  # Only lowercase letters
   device_description: ESPhome Craft 480 Kitchen Version
   
   # Switch
-  light_switch: your entity #HA 스위치 entity id
-  induction_switch: your entity #HA 스위치 entity id
-  rice_switch: your entity #HA 스위치 entity id  
-  fan_switch: your entity
+  light_switch: your entity #HA Light Switch entity id
+  induction_switch: your entity #HA Induction entity id
+  rice_switch: your entity #HA Electric rice cooker entity id  
+  fan_switch: your entity #HA HA Can entity id  
   
   # Sensors
-  indoor_temp: your entity # HA 실내 온도 센서 entity id
-  indoor_hum: your entity # HA 실내 습도 센서 entity id  
-  energy_sensor: your entity # HA 에너지미터 entity id  
-  presence_sensor: your entity # 주방 동작감지센서 entity id  
+  indoor_temp: your entity # HA indoor temperature sensor entity id
+  indoor_hum: your entity # HA indoor humidity sensor entity id  
+  energy_sensor: your entity # HA energy meter entity id  
+  presence_sensor: your entity # HA KC presence or motion detecter entity id  
 
   #devices
-  aircon_id: your entity #HA 에어컨 entity id
-  media_player: media_player.entity
+  aircon_id: your entity #HA Air conditioner entity id
+  media_player: media_player.entity #HA KC media player entity id
   
-  #radio channel
+  #Radio channel, For Korea User,
   kbscool: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
   itv: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
   mbcfm4u: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
@@ -35,6 +35,10 @@ substitutions:
   KBS3FM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
   KBSHappyFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
   SBSPowerFM: "https://your_radio_address/radio?keys=ytn&token=homeassistant"
+
+  # location
+  latitude: "37" # your home latitude
+  longitude: "126" # your home longitude  
 
   # location
   latitude: "37" # 집의 위도
