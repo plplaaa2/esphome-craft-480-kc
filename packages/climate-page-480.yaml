@@ -27,7 +27,7 @@ lvgl:
                       text_font: regular_20
                 on_press:
                   then:
-                    - lvgl.page.show: menu_page2
+                    - lvgl.page.show: menu_page
             - label:
                 x: -20
                 y: 20
