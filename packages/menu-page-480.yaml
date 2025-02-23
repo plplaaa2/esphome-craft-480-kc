@@ -1,6 +1,6 @@
 lvgl:
   pages:
-    - id: main_page
+    - id: menu_page2
       widgets:
         - obj:
             x: 0
@@ -17,174 +17,88 @@ lvgl:
             height: 453
             widgets:
               - button:
-                  align: TOP_LEFT
-                  width: 305
-                  height: 145
-                  styles: button_menu
-                  pad_all: 0
-                  on_click:
-                    - lvgl.page.show: weather_page
-                  widgets:
-                    - image:
-                        width: 150
-                        height: 145
-                        align: TOP_LEFT
-                        styles: time_style
-                        bg_opa: TRANSP
-                        id: time_weather_icon
-                        src: partlycloud
-                        antialias: true
-                    - label:
-                        x: -10
-                        y: 10                        
-                        align: TOP_RIGHT
-                        id: time_temp
-                        text: "--°"
-                        text_font: weather_60
-                        text_align: RIGHT
-                    - label:
-                        y: 75
-                        x: -25
-                        align: TOP_RIGHT
-                        id: time_minmax
-                        text: "--°|--°"
-                        text_font: weather_20
-                        text_align: RIGHT
-                        recolor: true
-                    - label:
-                        y: 105
-                        x: -95
-                        align: TOP_RIGHT
-                        id: time_hum
-                        text: "\U000F058E--%"
-                        text_font: weather_20
-                        text_align: LEFT
-                    - label:
-                        y: 105
-                        x: -10
-                        align: TOP_RIGHT
-                        id: time_wind
-                        text: "-m/s"
-                        text_font: weather_20
-                        text_align: RIGHT
-              - button:
-                  align: LEFT_MID
-                  width: 305
-                  height: 145
-                  styles: button_menu
-                  pad_all: 10
-                  widgets:
-                    - label:
-                        y: -7
-                        align: TOP_RIGHT
-                        text: "12:00"
-                        id: time_time
-                        text_font: time_90
-                        text_align: CENTER
-                    - label:
-                        x: 5
-                        align: LEFT_MID
-                        id: time_ampm
-                        text: "오전"
-                        text_font: weather_25
-                    - label:
-                        align: BOTTOM_MID
-                        id: time_date
-                        text: "2000월 00월 00일 0요일"
-                        text_font: weather_25
-              - button:
                   width: 150
                   height: 145
-                  align: TOP_RIGHT
+                  align: TOP_MID
                   styles: button_menu
-                  id: ind_switch_button
                   pad_all: 5
-                  checkable: true
-                  checked:
-                    styles: button_checked
                   on_click:
-                    then:
-                      - delay: 100ms
-                      - switch.toggle: ind_switch
+                     - lvgl.page.show: climate_page
                   widgets:
                     - label:
                         align: TOP_MID
-                        text: "\U000F184C"    
+                        text: "\U000F0F54"    
                         text_font: icon_font_100
                     - label:
                         align: BOTTOM_MID
-                        text: "인덕션"
+                        text: "에어컨"
                         text_font: regular_25
-                        
+              - button:
+                  width: 150
+                  height: 145
+                  align: LEFT_MID
+                  styles: button_menu
+                  pad_all: 5
+                  on_click:
+                     - lvgl.page.show: radio_page
+                  widgets:
+                    - label:
+                        align: TOP_MID
+                        text: "\U000F0439"
+                        text_font: icon_font_100
+                    - label:
+                        align: BOTTOM_MID
+                        text: "라디오"  
+                        text_font: regular_25
+
+              - button:
+                  width: 150
+                  height: 145
+                  align: CENTER
+                  styles: button_menu
+                  pad_all: 5
+                  bg_color: 0xFF4400
+                  on_click:
+                     - lvgl.page.show: about_page
+                  widgets:
+                    - label:
+                        align: CENTER
+                        text: "\U000F07D0"    
+                        text_font: icon_font_100
+
               - button:
                   width: 150
                   height: 145
                   align: RIGHT_MID
                   styles: button_menu
-                  id: rice_switch_button
                   pad_all: 5
-                  checkable: true
-                  checked:
-                    styles: button_checked
                   on_click:
-                    then:
-                      - delay: 100ms
-                      - switch.toggle: rice_switch
+                     - lvgl.page.show: energy_page
                   widgets:
                     - label:
                         align: TOP_MID
-                        text: "\U000F07EA"
+                        text: "\U000F1903"    
                         text_font: icon_font_100
                     - label:
                         align: BOTTOM_MID
-                        text: "전기밥솥"  
-                        text_font: regular_25
-                        
-              - button:
-                  width: 150
-                  height: 145
-                  align: BOTTOM_LEFT
-                  styles: button_menu
-                  id: light_switch_button
-                  pad_all: 5
-                  checkable: true
-                  checked:
-                     styles: button_checked
-                  on_click:
-                    then:
-                      - delay: 100ms
-                      - switch.toggle: light_switch
-                  widgets:
-                    - label:
-                        align: TOP_MID
-                        text: "\U000F0769"    
-                        text_font: icon_font_100
-                    - label:
-                        align: BOTTOM_MID
-                        text: "주방 등"
+                        text: "에너지"
                         text_font: regular_25
               - button:
                   width: 150
                   height: 145
                   align: BOTTOM_MID
                   styles: button_menu
-                  id: fan_switch_button
                   pad_all: 5
-                  checkable: true
-                  checked:
-                     styles: button_checked
                   on_click:
-                    then:
-                      - delay: 100ms
-                      - switch.toggle: fan_switch
+                    - lvgl.page.show: setting_page
                   widgets:
                     - label:
                         align: TOP_MID
-                        text: "\U000F0210"    
+                        text: "\U000F0493"    
                         text_font: icon_font_100
                     - label:
                         align: BOTTOM_MID
-                        text: "주방후드"
+                        text: "설 정"
                         text_font: regular_25
               - button:
                   width: 150
@@ -194,13 +108,13 @@ lvgl:
                   bg_color: 0xFF4400
                   pad_all: 5
                   on_click:
-                    - lvgl.page.show: menu_page2
+                    - lvgl.page.show: main_page
                   widgets:
                     - label:
                         align: TOP_MID
-                        text: "\U000F07D0"
+                        text: "\U000F17B2"
                         text_font: icon_font_100
                     - label:
                         align: BOTTOM_MID
-                        text: "메 뉴"  
+                        text: "Back"  
                         text_font: regular_25
