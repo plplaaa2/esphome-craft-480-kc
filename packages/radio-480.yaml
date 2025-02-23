@@ -487,7 +487,7 @@ lvgl:
                   align: BOTTOM_LEFT
                   width: 60
                   height: 60
-                  styles: card
+                  styles: menu_button
                   radius: 75
                   outline_width: 1
                   on_click:
@@ -506,7 +506,7 @@ lvgl:
                   align: BOTTOM_MID
                   width: 60
                   height: 60
-                  styles: card
+                  styles: menu_button
                   radius: 75
                   outline_width: 1
                   on_click:
@@ -527,7 +527,7 @@ lvgl:
                   align: BOTTOM_MID
                   width: 60
                   height: 60
-                  styles: card
+                  styles: menu_button
                   checkable: true
                   radius: 75
                   outline_width: 1
@@ -560,7 +560,7 @@ lvgl:
                   align: BOTTOM_RIGHT
                   width: 60
                   height: 60
-                  styles: card
+                  styles: menu_button
                   radius: 75
                   outline_width: 1
                   on_click:
