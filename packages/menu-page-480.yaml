@@ -31,7 +31,7 @@ lvgl:
                         text_font: icon_font_100
                     - label:
                         align: BOTTOM_MID
-                        text: "에어컨" # Air Conditionor
+                        text: "Climate" 
                         text_font: regular_25
               - button:
                   width: 150
@@ -48,7 +48,7 @@ lvgl:
                         text_font: icon_font_100
                     - label:
                         align: BOTTOM_MID
-                        text: "라디오"  
+                        text: "Radio"  
                         text_font: regular_25
 
               - button:
@@ -81,7 +81,7 @@ lvgl:
                         text_font: icon_font_100
                     - label:
                         align: BOTTOM_MID
-                        text: "에너지"  # Energy
+                        text: "Energy"  # Energy
                         text_font: regular_25
               - button:
                   width: 150
@@ -98,7 +98,7 @@ lvgl:
                         text_font: icon_font_100
                     - label:
                         align: BOTTOM_MID
-                        text: "설 정"   # Setting
+                        text: "Setting"   # Setting
                         text_font: regular_25
               - button:
                   width: 150
