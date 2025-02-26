@@ -44,7 +44,7 @@ lvgl:
                       styles: weather_style
                       widgets:
                         - label:
-                            text: "대체로흐림"
+                            text: "-----"
                             x: 0
                             y: 10
                             align: TOP_LEFT
@@ -85,7 +85,7 @@ lvgl:
                             x: 0
                             y: -5
                             align: BOTTOM_LEFT
-                            text: "내일 --시 비 내림(--.-mm)"
+                            text: "--H Rainny(--.-mm)"
                             id: home_weather_rainystarttmr
                             hidden: true
                             text_align: CENTER
@@ -100,7 +100,7 @@ lvgl:
                       styles: weather_style                      
                       widgets:        
                         - label:
-                            text: "\U000F00B5 미세먼지"
+                            text: "\U000F00B5 "
                             x: 20
                             y: 5
                             align: TOP_LEFT
