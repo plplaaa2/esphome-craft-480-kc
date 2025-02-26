@@ -49,7 +49,7 @@ select:
   - platform: template
     id: radio_select
     name: "Radio Channel"
-    options:
+    options:     # Radio Channels
       - KBS COOL
       - ITV
       - MBC FM4U
