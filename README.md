@@ -23,6 +23,11 @@ You have to find and use this part on your own.
 
 **User's Guide**
 
+folder name
+
+~/weather
+~/fonts
+
 ```
 substitutions:
   name: "esphome-480-kc"  # Only lowercase letters
