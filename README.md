@@ -7,9 +7,7 @@ I'm not a developer, so I don't really use annotations.
 
 This is for esphome Korean users and does not fit the English language.
 
-The weather included in the source has to use certain HA HACS components in Korea, so you have to change the weather sensor to one that suits you.
 
-Also, 
 
 **Key Features**
 
@@ -24,6 +22,8 @@ Also,
 there's no image & fonts file here, which is a free image, but it's not included because it's copyrighted. 
 
 You have to find and use this part on your own.
+
+The weather included in the source has to use certain HA HACS components in Korea, so you have to change the weather sensor to one that suits you.
 
 ```
 substitutions:
