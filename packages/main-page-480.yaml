@@ -85,12 +85,12 @@ lvgl:
                         x: 5
                         align: LEFT_MID
                         id: time_ampm
-                        text: "오전"
+                        text: "AM"
                         text_font: weather_25
                     - label:
                         align: BOTTOM_MID
                         id: time_date
-                        text: "2000월 00월 00일 0요일"
+                        text: "2000Y 00M 00D ---"
                         text_font: weather_25
               - button:
                   width: 150
@@ -113,7 +113,7 @@ lvgl:
                         text_font: icon_font_100
                     - label:
                         align: BOTTOM_MID
-                        text: "인덕션"
+                        text: "Induction"
                         text_font: regular_25
                         
               - button:
@@ -137,7 +137,7 @@ lvgl:
                         text_font: icon_font_100
                     - label:
                         align: BOTTOM_MID
-                        text: "전기밥솥"  
+                        text: "Ricecooker"  
                         text_font: regular_25
                         
               - button:
@@ -161,7 +161,7 @@ lvgl:
                         text_font: icon_font_100
                     - label:
                         align: BOTTOM_MID
-                        text: "주방 등"
+                        text: "KC Light"
                         text_font: regular_25
               - button:
                   width: 150
@@ -184,7 +184,7 @@ lvgl:
                         text_font: icon_font_100
                     - label:
                         align: BOTTOM_MID
-                        text: "주방후드"
+                        text: "Hud Fan"
                         text_font: regular_25
               - button:
                   width: 150
@@ -202,5 +202,5 @@ lvgl:
                         text_font: icon_font_100
                     - label:
                         align: BOTTOM_MID
-                        text: "메 뉴"  
+                        text: "Menu"  
                         text_font: regular_25
