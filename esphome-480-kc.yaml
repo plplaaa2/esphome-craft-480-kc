@@ -18,7 +18,7 @@ substitutions:
   aircon_id: your entity #HA Air conditioner entity id
   media_player: media_player.entity #HA KC media player entity id
   
-  #Radio channel, For Korea User,
+  #Radio channel, For Korea User, If you want to edit channel names. you can change the radio-480.yaml
   kbscool: "https://your_radio_address"
   itv: "https://your_radio_address"
   mbcfm4u: "https://your_radio_address"
@@ -39,11 +39,7 @@ substitutions:
   # location
   latitude: "37" # your home latitude
   longitude: "126" # your home longitude  
-
-  # location
-  latitude: "37" # 집의 위도
-  longitude: "126" # 집의 경도
-  
+ 
   # Characters
   weather_characters: "
     !#%'()+,-./0123456789:;<>?@ABCDEFGHIJKLMNOPQRSTUVWYZ[]_abcdefghijklmnopqrst\
