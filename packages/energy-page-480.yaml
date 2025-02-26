@@ -33,7 +33,7 @@ lvgl:
                 align: TOP_RIGHT
                 height: 50
                 styles: time_style
-                text: "에너지"
+                text: "Energy"
                 text_font: regular_40
             - obj:
                 align: BOTTOM_MID
@@ -122,7 +122,7 @@ lvgl:
                       x: 0
                       y: -15
                       align: BOTTOM_MID
-                      text: "소비량"
+                      text: "Consume"
                       text_font: regular_40
                       text_color: 0xE5E5E5
                       text_align: CENTER
