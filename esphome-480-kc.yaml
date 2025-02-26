@@ -63,7 +63,7 @@ packages:
   setting: !include packages/setting-480.yaml
   image: !include packages/weather-img.yaml
   #Sensors
-  naver: !include packages/naver-480.yaml
+  naver: !include packages/weather-480.yaml
   indoor: !include packages/indoor-480.yaml
   aircon: !include packages/aircon-480.yaml
   energy: !include packages/energy-480.yaml
