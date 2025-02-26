@@ -45,7 +45,7 @@ substitutions:
   aircon_id: your entity #HA Air conditioner entity id
   media_player: media_player.entity #HA KC media player entity id
   
-  #Radio channel, For Korea User,
+  #Radio channel, For Korea User, if you want to change channels, Edit radio-480.yaml
   kbscool: "https://your_radio_address"
   itv: "https://your_radio_address"
   mbcfm4u: "https://your_radio_address"
