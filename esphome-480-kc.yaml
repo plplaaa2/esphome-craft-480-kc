@@ -100,7 +100,7 @@ script:
             static char time_buf[10];
             auto now = id(time_comp).now();
             bool is_pm = now.hour >= 12;
-            snprintf(time_buf, sizeof(time_buf), "%s", is_pm ? "오후" : "오전");
+            snprintf(time_buf, sizeof(time_buf), "%s", is_pm ? "PM" : "AM");
             return std::string(time_buf).c_str();
   - id: date_update
     then:
@@ -109,8 +109,8 @@ script:
           text: !lambda |-
             static char date_buf[30];
             auto now = id(time_comp).now();
-            const char* weekdays[] = {"일", "월", "화", "수", "목", "금", "토"};
-            snprintf(date_buf, sizeof(date_buf), "%04d년 %02d월 %02d일 %s요일", now.year, now.month, now.day_of_month, weekdays[now.day_of_week - 1]);
+            const char* weekdays[] = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
+            snprintf(date_buf, sizeof(date_buf), "%04d-%02d-%02d-%s", now.year, now.month, now.day_of_month, weekdays[now.day_of_week - 1]);
             return date_buf;
 
 lvgl:
