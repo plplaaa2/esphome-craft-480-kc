@@ -171,7 +171,7 @@ text_sensor:
       - lvgl.label.update:
           id: home_weather_hum
           text: 
-            format: "#47ACF5 습도# %.0f%% #02D109 %s풍# %.1f m/s"
+            format: "#47ACF5 Hum# %.0f%% #02D109 %s# %.1f m/s"
             args: [ 'id(naver_weather_humidity_1).state' , x.c_str(),'id(naver_weather_windspeed_1).state']    
 
   - platform: homeassistant
@@ -181,23 +181,16 @@ text_sensor:
     on_value:          
       - if: 
           condition:
-            - lambda: 'return id(naver_weather_rainystarttmr_1).state != "비안옴";'
+            - lambda: 'return id(naver_weather_rainystarttmr_1).state != "not rainny";'
           then:
             - lvgl.widget.show: home_weather_rainystarttmr
-            #- lvgl.widget.show: time_rainfall
             - lvgl.label.update:
                 id: home_weather_rainystarttmr
                 text: 
-                  format: "%s 비 내림 (%smm)"
+                  format: "%s rainny (%smm)"
                   args: [ x.c_str(), id(naver_weather_rainfall_1).state.c_str() ]
-           # - lvgl.label.update:
-            #    id: time_rainfall
-             #   text: 
-              #    format: "\U000F054A %s 비 내림 (%smm)"
-               #   args: [ x.c_str(), #id(naver_weather_rainfall_1).state.c_str() ]
           else:
             - lvgl.widget.hide: home_weather_rainystarttmr
-            #- lvgl.widget.hide: time_rainfall
 
   - platform: homeassistant
     entity_id: sensor.naver_weather_rainfall_1
@@ -215,13 +208,13 @@ text_sensor:
             static char buf[15];
             std::string x_str = (id(naver_weather_finedustgrade_1).state);
             snprintf(buf, sizeof(buf), "%s", x_str.c_str());
-            if (x_str == "좋음") {
+            if (x_str == "Good") {
               lv_obj_set_style_text_color(id(home_weather_pm10), lv_color_hex(0x005AC7), LV_STATE_DEFAULT); // 딥블루
-            } else if (x_str == "보통") {
+            } else if (x_str == "Normal") {
               lv_obj_set_style_text_color(id(home_weather_pm10), lv_color_hex(0x00FF00), LV_STATE_DEFAULT); // 녹색
-            } else if (x_str == "나쁨") {
+            } else if (x_str == "Bad") {
               lv_obj_set_style_text_color(id(home_weather_pm10), lv_color_hex(0xFFA500), LV_STATE_DEFAULT); // 오렌지색
-            } else if (x_str == "매우나쁨") {
+            } else if (x_str == "Too Bad") {
               lv_obj_set_style_text_color(id(home_weather_pm10), lv_color_hex(0xFF0000), LV_STATE_DEFAULT); // 레드
             }
             return buf;
@@ -236,13 +229,13 @@ text_sensor:
             static char buf[15];
             std::string x_str = (id(naver_weather_ultrafinedustgrade_1).state);
             snprintf(buf, sizeof(buf), "%s", x_str.c_str());
-            if (x_str == "좋음") {
+            if (x_str == "Good") {
               lv_obj_set_style_text_color(id(home_weather_pm25), lv_color_hex(0x005AC7), LV_STATE_DEFAULT); // 딥블루
-            } else if (x_str == "보통") {
+            } else if (x_str == "Normal") {
               lv_obj_set_style_text_color(id(home_weather_pm25), lv_color_hex(0x00FF00), LV_STATE_DEFAULT); // 녹색
-            } else if (x_str == "나쁨") {
+            } else if (x_str == "Bad") {
               lv_obj_set_style_text_color(id(home_weather_pm25), lv_color_hex(0xFFA500), LV_STATE_DEFAULT); // 오렌지색
-            } else if (x_str == "매우나쁨") {
+            } else if (x_str == "Too Bad") {
               lv_obj_set_style_text_color(id(home_weather_pm25), lv_color_hex(0xFF0000), LV_STATE_DEFAULT); // 레드
             }
             return buf;
@@ -259,13 +252,13 @@ text_sensor:
             static char buf[15];
             std::string x_str = (id(naver_weather_ozongrade_1).state);
             snprintf(buf, sizeof(buf), "%s", x_str.c_str());
-            if (x_str == "좋음") {
+            if (x_str == "Good") {
               lv_obj_set_style_text_color(id(home_weather_ozongrade), lv_color_hex(0x005AC7), LV_STATE_DEFAULT); // 딥블루
-            } else if (x_str == "보통") {
+            } else if (x_str == "normal") {
               lv_obj_set_style_text_color(id(home_weather_ozongrade), lv_color_hex(0x00FF00), LV_STATE_DEFAULT); // 녹색
-            } else if (x_str == "나쁨") {
+            } else if (x_str == "Bad") {
               lv_obj_set_style_text_color(id(home_weather_ozongrade), lv_color_hex(0xFFA500), LV_STATE_DEFAULT); // 오렌지색
-            } else if (x_str == "매우나쁨") {
+            } else if (x_str == "Too Bad") {
               lv_obj_set_style_text_color(id(home_weather_ozongrade), lv_color_hex(0xFF0000), LV_STATE_DEFAULT); // 레드
             }
             return buf;
@@ -280,13 +273,13 @@ text_sensor:
             static char buf[15];
             std::string x_str = (id(naver_weather_todayuvgrade_1).state);
             snprintf(buf, sizeof(buf), "%s", x_str.c_str());
-            if (x_str == "좋음") {
+            if (x_str == "Good") {
               lv_obj_set_style_text_color(id(home_weather_todayuvgrade), lv_color_hex(0x005AC7), LV_STATE_DEFAULT); // 딥블루
-            } else if (x_str == "보통") {
+            } else if (x_str == "normal") {
               lv_obj_set_style_text_color(id(home_weather_todayuvgrade), lv_color_hex(0x00FF00), LV_STATE_DEFAULT); // 녹색
-            } else if (x_str == "높음") {
+            } else if (x_str == "Bad") {
               lv_obj_set_style_text_color(id(home_weather_todayuvgrade), lv_color_hex(0xFFA500), LV_STATE_DEFAULT); // 오렌지색
-            } else if (x_str == "매우높음") {
+            } else if (x_str == "Too Bad") {
               lv_obj_set_style_text_color(id(home_weather_todayuvgrade), lv_color_hex(0xFF0000), LV_STATE_DEFAULT); // 레드
             }
             return buf;
@@ -329,7 +322,7 @@ sensor:
       - lvgl.label.update:
           id: home_weather_hum
           text: 
-            format: "#47ACF5 습도# %.0f%% #02D109 %s풍# %.1f m/s"
+            format: "#47ACF5 Hum# %.0f%% #02D109 %s# %.1f m/s"
             args: [ 'x', 'id(naver_weather_windbearing_1).state.c_str()', 'id(naver_weather_windspeed_1).state']
       - lvgl.label.update:
           id: time_hum
@@ -361,7 +354,7 @@ sensor:
       - lvgl.label.update:
           id: home_weather_hum
           text: 
-            format: "#47ACF5 습도# %.0f%% #02D109 %s풍# %.1f m/s"
+            format: "#47ACF5 Hum# %.0f%% #02D109 %s# %.1f m/s"
             args: [ 'id(naver_weather_humidity_1).state' , 'id(naver_weather_windbearing_1).state.c_str()', 'x']
       - lvgl.label.update:
           id: time_wind
