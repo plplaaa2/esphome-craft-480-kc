@@ -34,7 +34,7 @@ lvgl:
                 align: TOP_RIGHT
                 height: 50
                 styles: time_style
-                text: "에어컨"
+                text: "Airconditioner"
                 text_font: regular_40                
             - arc:
                 y: 20
@@ -94,7 +94,7 @@ lvgl:
                       x: 0
                       y: 50
                       align: CENTER
-                      text: "설정 온도"
+                      text: "Set Temp"
                       text_font: regular_25
                       text_color: 0xE5E5E5
                       text_align: CENTER
@@ -147,7 +147,7 @@ lvgl:
                 x: 0
                 y: -20
                 align: BOTTOM_MID
-                text: "현재 온도 --.-°c"
+                text: "Current Temp --.-°c"
                 id: aircon_now_temp_text
                 text_font: regular_25
                 text_color: 0xE5E5E5
@@ -167,12 +167,12 @@ lvgl:
                       align: CENTER
                       text_font: regular_20
                       options:
-                        - "자동"
-                        - "난방"
-                        - "냉방"
-                        - "제습"
-                        - "송풍"
-                        - "꺼짐"
+                        - "Auto"
+                        - "Warm"
+                        - "Cool"
+                        - "Dry"
+                        - "Fan"
+                        - "Off"
                       on_value:
                         then:
                           - if:
@@ -245,10 +245,10 @@ lvgl:
                       align: CENTER
                       text_font: regular_20
                       options:
-                        - "자동"
-                        - "강"
-                        - "중"
-                        - "약"
+                        - "Auto"
+                        - "High"
+                        - "Medium"
+                        - "Low"
                       on_value:
                         then:
                           - if:
