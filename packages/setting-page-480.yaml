@@ -53,7 +53,7 @@ lvgl:
                           align: TOP_RIGHT
                           height: 50
                           styles: time_style
-                          text: "설 정"
+                          text: "Setting"
                           text_font: regular_40
                           
                       - obj:
@@ -66,7 +66,7 @@ lvgl:
                           widgets:
                             - label:
                                 align: BOTTOM_LEFT
-                                text: "화면 밝기"
+                                text: "Brightness"
                                 text_font: regular_25
                       - obj:
                           x: -5
@@ -113,7 +113,7 @@ lvgl:
                           widgets:
                             - label:
                                 align: BOTTOM_LEFT
-                                text: "메인 복귀(S)"
+                                text: "Return Menu(S)" 
                                 text_font: regular_25
                       - obj:
                           x: -5
@@ -172,7 +172,7 @@ lvgl:
                           widgets:
                             - label:
                                 align: LEFT_MID
-                                text: "자동 조명"
+                                text: "Auto Light"
                                 text_font: regular_25
                             - switch:
                                 y: 10
