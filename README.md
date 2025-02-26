@@ -69,6 +69,8 @@ substitutions:
 
 ```
 
+**Shorts Video**
+
 https://youtube.com/shorts/XZFKfd7OopM
 
 
