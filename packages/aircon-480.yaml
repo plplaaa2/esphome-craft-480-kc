@@ -19,7 +19,7 @@ text_sensor:
                 selected_index: 0
             - lvgl.label.update: 
                 id: aircon_mode_text
-                text: "#FFFFFF 자동#"
+                text: "#FFFFFF Auto#"
                   
       - if:
           condition:
@@ -30,7 +30,7 @@ text_sensor:
                 selected_index: 1
             - lvgl.label.update: 
                 id: aircon_mode_text
-                text: "#FFA500 난방#"    
+                text: "#FFA500 Warm#"    
       - if:
           condition:
             lambda: 'return id(aircon_mode).state == "cool";'
@@ -40,7 +40,7 @@ text_sensor:
                 selected_index: 2
             - lvgl.label.update: 
                 id: aircon_mode_text
-                text: "#2F8CD8 냉방#"
+                text: "#2F8CD8 Cool#"
       - if:
           condition:
             lambda: 'return id(aircon_mode).state == "dry";'
@@ -50,7 +50,7 @@ text_sensor:
                 selected_index: 3
             - lvgl.label.update: 
                 id: aircon_mode_text
-                text: "#2F8CD8 제습#"
+                text: "#2F8CD8 Dry#"
       - if:
           condition:
             lambda: 'return id(aircon_mode).state == "fan_only";'
@@ -71,7 +71,7 @@ text_sensor:
                 selected_index: 5  
             - lvgl.label.update: 
                 id: aircon_mode_text
-                text: "#FFFFFF 꺼짐#" 
+                text: "#FFFFFF Off#" 
             - lvgl.widget.hide: aircon_run 
       - if:
           condition:
@@ -128,7 +128,7 @@ sensor:
       - lvgl.label.update:
           id: aircon_now_temp_text
           text:
-            format: "현재 온도 %.1f°c"
+            format: "Current Temp %.1f°c"
             args: [ 'x' ]
 
   - platform: homeassistant
