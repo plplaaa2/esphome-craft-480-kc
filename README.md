@@ -23,9 +23,10 @@ You have to find and use this part on your own.
 
 **User's Guide**
 
-folder name
+folder names
 
 ~/weather
+
 ~/fonts
 
 ```
