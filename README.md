@@ -8,7 +8,6 @@ I'm not a developer, so I don't really use annotations.
 This is for esphome Korean users and does not fit the English language.
 
 
-
 **Key Features**
 
 1. Kitchen Device Control
@@ -69,6 +68,8 @@ substitutions:
   longitude: "126" # your home longitude  
 
 ```
+
+https://youtube.com/shorts/XZFKfd7OopM
 
 
  **Main Page**
