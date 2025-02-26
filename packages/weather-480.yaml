@@ -172,13 +172,14 @@ text_sensor:
           id: home_weather_hum
           text: 
             format: "#47ACF5 Hum# %.0f%% #02D109 %s# %.1f m/s"
+            # hum, wind direction, wind speed
             args: [ 'id(naver_weather_humidity_1).state' , x.c_str(),'id(naver_weather_windspeed_1).state']    
 
   - platform: homeassistant
     entity_id: sensor.naver_weather_rainystarttmr_1
     name: naver weather rainystarttmr
     id: naver_weather_rainystarttmr_1
-    on_value:          
+    on_value:
       - if: 
           condition:
             - lambda: 'return id(naver_weather_rainystarttmr_1).state != "not rainny";'
