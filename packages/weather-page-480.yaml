@@ -100,7 +100,7 @@ lvgl:
                       styles: weather_style                      
                       widgets:        
                         - label:
-                            text: "\U000F00B5 "
+                            text: "\U000F00B5 PM 10"
                             x: 20
                             y: 5
                             align: TOP_LEFT
@@ -109,7 +109,7 @@ lvgl:
                             text_font: weather_20
                             text_color: 0xE5E5E5
                         - label:
-                            text: "아주나쁨"
+                            text: "----"
                             x: 140
                             y: 5
                             align: TOP_LEFT
@@ -118,7 +118,7 @@ lvgl:
                             text_font: weather_20
                             text_color: 0xE5E5E5
                         - label:
-                            text: "자외선 \U000F17FF"
+                            text: "UV \U000F17FF"
                             x: -20
                             y: 5
                             align: TOP_RIGHT
@@ -127,7 +127,7 @@ lvgl:
                             text_font: weather_20
                             text_color: 0xE5E5E5
                         - label:
-                            text: "매우높음"
+                            text: "----"
                             x: -120
                             y: 5
                             align: TOP_RIGHT
@@ -136,7 +136,7 @@ lvgl:
                             text_font: weather_20
                             text_color: 0xE5E5E5
                         - label:
-                            text: "\U000F00B6 초미세먼지"
+                            text: "\U000F00B6 PM 2.5"
                             x: 20
                             y: 0
                             align: LEFT_MID
@@ -145,7 +145,7 @@ lvgl:
                             text_font: weather_20
                             text_color: 0xE5E5E5
                         - label:
-                            text: "매우나쁨"
+                            text: "----"
                             x: 165
                             y: 0
                             align: LEFT_MID
@@ -154,7 +154,7 @@ lvgl:
                             text_font: weather_20
                             text_color: 0xE5E5E5
                         - label:
-                            text: "오존 \U000F0C16"
+                            text: "OZ \U000F0C16"
                             x: -20
                             y: 0
                             align: RIGHT_MID
@@ -163,7 +163,7 @@ lvgl:
                             text_font: weather_20
                             text_color: 0xE5E5E5
                         - label:
-                            text: "매우나쁨"
+                            text: "----"
                             x: -100
                             y: 0
                             align: RIGHT_MID
@@ -271,7 +271,7 @@ lvgl:
                 x: 0
                 y: 70
                 align: CENTER
-                text: "실내 온도"
+                text: "Indoor Temp"
                 text_font: weather_20
                 text_color: 0xE5E5E5
                 text_align: CENTER
@@ -354,7 +354,7 @@ lvgl:
                 x: 0
                 y: 70
                 align: CENTER
-                text: "실내 습도"
+                text: "Imdoor Hum"
                 text_font: weather_20
                 text_color: 0xE5E5E5
                 text_align: CENTER  
