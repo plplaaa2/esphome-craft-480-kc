@@ -8,4 +8,5 @@ You have to find and use this part on your own.
 Default Fonts names
 
 fonts/Roboto-Regular.woff
-fonts/Roboto-bold.woff
+
+fonts/Roboto-Bold.woff
