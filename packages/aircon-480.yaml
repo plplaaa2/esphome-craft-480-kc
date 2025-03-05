@@ -60,7 +60,7 @@ text_sensor:
                 selected_index: 4
             - lvgl.label.update: 
                 id: aircon_mode_text
-                text: "#00CED1 송풍#"
+                text: "#00CED1 Fan Only#"
             
       - if:
           condition:
