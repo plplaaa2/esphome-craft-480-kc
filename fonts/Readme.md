@@ -10,3 +10,5 @@ You have to find and use this part on your own.
 fonts/Roboto-Regular.woff
 
 fonts/Roboto-Bold.woff
+
+fonts/materialdesignicons-webfont.ttf
