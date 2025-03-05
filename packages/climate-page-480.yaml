@@ -75,7 +75,7 @@ lvgl:
                       x: 0
                       y: -80
                       align: CENTER
-                      text: "냉방"
+                      text: "--"
                       id: aircon_mode_text
                       text_font: regular_25
                       text_color: 0xE5E5E5
