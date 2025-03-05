@@ -8,13 +8,13 @@ You have to find and use this part on your own.
 image:
 #날씨 아이콘
   - file: "weather/sunny.png"
-  - file: "weather/cloudy.png"
+  - file: "weather/cloudy.png" # sun below
   - file: "weather/clearnight.png"
   - file: "weather/hail.png"
   - file: "weather/lightning.png"
   - file: "weather/nightpartlycloud.png"
   - file: "weather/partlycloud.png"
-  - file: "weather/scloudy.png"
+  - file: "weather/scloudy.png"  # sun above
   - file: "weather/pouring.png"
   - file: "weather/rainy.png"
   - file: "weather/snowy.png"
