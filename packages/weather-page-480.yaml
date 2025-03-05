@@ -354,7 +354,7 @@ lvgl:
                 x: 0
                 y: 70
                 align: CENTER
-                text: "Imdoor Hum"
+                text: "Indoor Hum"
                 text_font: weather_20
                 text_color: 0xE5E5E5
                 text_align: CENTER  
