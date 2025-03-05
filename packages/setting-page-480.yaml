@@ -27,7 +27,7 @@ lvgl:
                     checked: 
                       text_color: 0xE5E5E5
                 tabs:
-                  - name: "설   정정"
+                  - name: "Setting"
                     id: display_set
                     widgets:
                       - button:
