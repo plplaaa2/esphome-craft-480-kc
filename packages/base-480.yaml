@@ -51,8 +51,7 @@ api:
         then:
           - lvgl.widget.hide: ha_connected_title
 ota:
-  - platform: esphome
-    password: !secret hotspot_pw
+  - platform: esphome    
 
 wifi:
   id: iptime
