@@ -76,7 +76,7 @@ select:
                 action: media_player.play_media
                 data: 
                   entity_id: $media_player
-                  media_content_id: $kbscool
+                  media_content_id: ${kbscool}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -92,7 +92,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $itv
+                  media_content_id: ${itv}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -108,7 +108,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $mbcfm4u
+                  media_content_id: ${mbcfm4u}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -125,7 +125,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $KBSClassic
+                  media_content_id: ${KBSClassic}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -141,7 +141,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $CBSMusic
+                  media_content_id: ${CBSMusic}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -157,7 +157,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $YTN
+                  media_content_id: ${YTN}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -173,7 +173,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $TBS
+                  media_content_id: ${TBS}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -189,7 +189,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $MBCFM
+                  media_content_id: ${MBCFM}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -205,7 +205,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $KBS1FM
+                  media_content_id: ${KBS1FM}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -221,7 +221,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $CBSFM
+                  media_content_id: ${CBSFM}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -237,7 +237,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $TBN
+                  media_content_id: ${TBN}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -253,7 +253,7 @@ select:
                 action: media_player.play_media
                 data:
                   entity_id: $media_player
-                  media_content_id: $SBSLoveFM
+                  media_content_id: ${SBSLoveFM}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -285,7 +285,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $KBS3FM
+                  media_content_id: ${KBS3FM}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -301,7 +301,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $KBSHappyFM
+                  media_content_id: ${KBSHappyFM}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -317,7 +317,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $SBSPowerFM
+                  media_content_id: ${SBSPowerFM}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
