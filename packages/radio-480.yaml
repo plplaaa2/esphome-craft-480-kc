@@ -269,7 +269,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: $EBSFM
+                  media_content_id: ${KBS_Happy}
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
