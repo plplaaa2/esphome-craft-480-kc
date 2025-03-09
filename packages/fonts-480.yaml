@@ -25,11 +25,11 @@ font:
       - file: 'fonts/materialdesignicons-webfont.ttf' # http://materialdesignicons.com/cdn/7.4.47/ 
         glyphs: [
           "\U000F04DB",  # mdi:stop
-          "\U000F057E",  # mdi:volume-high
-          "\U000F057F",  # mdi:volume-low
+          "\U000F075D",  # mdi:volume-plus
+          "\U000F075E",  # mdi:volume-minus
           "\U000F0581",  # mdi:volume-off
           "\U000F04AE",  # mdi:skip-previous
-          "\U000F04AD"   # mdi:skip-next
+          "\U000F04AD",  # mdi:skip-next
           ]   
   - file: "fonts/Roboto-Regular.woff"
     id: title_font
