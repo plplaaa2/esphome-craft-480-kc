@@ -428,11 +428,12 @@ lvgl:
                               text_color: 0xE5E5E5
                               text_align: RIGHT
 
-              - button: 
+              - label: 
                   x: 30
                   y: -122
-                  styles: card
-                  radius: 75
+                  text: "\U000F075E"
+                  text_font: regular_40
+                  text_color: 0xE5E5E5
                   align: BOTTOM_LEFT
                   on_click:
                     then:
@@ -441,17 +442,13 @@ lvgl:
                           data: 
                             entity_id: $media_player
                             volume_level: !lambda 'return id(media_player_volume).state - 0.01;'
-                  widgets:
-                    - label:
-                        text: "\U000F075E"
-                        text_font: regular_40
-                        text_color: 0xE5E5E5
                   
-              - button: 
+              - label: 
                   x: -30
                   y: -122
-                  styles: card
-                  radius: 75
+                  text: "\U000F075D"
+                  text_font: regular_40
+                  text_color: 0xE5E5E5
                   align: BOTTOM_RIGHT
                   on_click:
                     then:
@@ -460,11 +457,6 @@ lvgl:
                           data: 
                             entity_id: $media_player
                             volume_level: !lambda 'return id(media_player_volume).state + 0.01;'
-                  widgets:
-                    - label:
-                        text: "\U000F075D"
-                        text_font: regular_40
-                        text_color: 0xE5E5E5
 
               - slider:
                   y: -140
