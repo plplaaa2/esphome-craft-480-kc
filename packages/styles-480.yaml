@@ -117,7 +117,7 @@ lvgl:
     - id: menu_button_checked
       radius: 75
       bg_color: 0xFFFFFF
-      bg_grad_dir: VER
+      bg_grad_dir: COVER
       text_color: 0x2F8CD8
       border_width: 5
       border_color: 0x2F8CD8
