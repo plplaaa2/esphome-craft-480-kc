@@ -76,7 +76,7 @@ select:
                 action: media_player.play_media
                 data: 
                   entity_id: $media_player
-                  media_content_id: ${kbscool}
+                  media_content_id: $kbscool
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -92,7 +92,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: ${itv}
+                  media_content_id: $itv
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -108,7 +108,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: ${mbcfm4u}
+                  media_content_id: $mbcfm4u
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -125,7 +125,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: ${KBSClassic}
+                  media_content_id: $KBSClassic
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -157,7 +157,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: ${YTN}
+                  media_content_id: $YTN
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -173,7 +173,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: ${TBS}
+                  media_content_id: $TBS
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -189,7 +189,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: ${MBCFM}
+                  media_content_id: $MBCFM
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -205,7 +205,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: ${KBS1FM}
+                  media_content_id: $KBS1FM
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -221,14 +221,14 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: ${CBSFM}
+                  media_content_id: $CBSFM
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
-                value: 981
+                value: 999
             - lvgl.label.update:
                 id: frequency_text
-                text: "98.1"
+                text: "99.9"
       - if:
           condition:
             lambda: 'return (id(radio_select).state == "TBN");'
@@ -237,7 +237,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: ${TBN}
+                  media_content_id: $TBN
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -253,7 +253,7 @@ select:
                 action: media_player.play_media
                 data:
                   entity_id: $media_player
-                  media_content_id: ${SBSLoveFM}
+                  media_content_id: $SBSLoveFM
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -269,7 +269,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: ${KBSHappyFM}
+                  media_content_id: $KBSHappyFM
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -285,7 +285,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: ${KBS3FM}
+                  media_content_id: $KBS3FM
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -301,7 +301,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: ${EBSFM}
+                  media_content_id: $EBSFM
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -317,7 +317,7 @@ select:
                 action: media_player.play_media
                 data:  
                   entity_id: $media_player
-                  media_content_id: ${SBSPowerFM}
+                  media_content_id: $SBSPowerFM
                   media_content_type: music
             - lvgl.indicator.update:
                 id: frequency_needle
@@ -428,13 +428,12 @@ lvgl:
                               text_color: 0xE5E5E5
                               text_align: RIGHT
 
-              - label: 
+              - button: 
                   x: 30
                   y: -122
+                  styles: card
+                  radius: 75
                   align: BOTTOM_LEFT
-                  text: "\U000F057F"
-                  text_font: regular_40
-                  text_color: 0xE5E5E5
                   on_click:
                     then:
                       - homeassistant.action:
@@ -442,14 +441,18 @@ lvgl:
                           data: 
                             entity_id: $media_player
                             volume_level: !lambda 'return id(media_player_volume).state - 0.01;'
+                  widgets:
+                    - label:
+                        text: "\U000F075E"
+                        text_font: regular_40
+                        text_color: 0xE5E5E5
                   
-              - label: 
+              - button: 
                   x: -30
                   y: -122
+                  styles: card
+                  radius: 75
                   align: BOTTOM_RIGHT
-                  text: "\U000F057E"
-                  text_font: regular_40
-                  text_color: 0xE5E5E5
                   on_click:
                     then:
                       - homeassistant.action:
@@ -457,6 +460,11 @@ lvgl:
                           data: 
                             entity_id: $media_player
                             volume_level: !lambda 'return id(media_player_volume).state + 0.01;'
+                  widgets:
+                    - label:
+                        text: "\U000F075D"
+                        text_font: regular_40
+                        text_color: 0xE5E5E5
 
               - slider:
                   y: -140
@@ -529,6 +537,8 @@ lvgl:
                   height: 60
                   styles: menu_button
                   checkable: true
+                  checked:
+                     styles: menu_button_checked
                   radius: 75
                   outline_width: 1
                   on_click:
