@@ -114,6 +114,15 @@ lvgl:
       border_color: 0x1e84eb
       border_opa: 50%
       outline_width: 1
+    - id: menu_button_checked
+      radius: 75
+      bg_color: 0xFFFFFF
+      bg_grad_dir: VER
+      text_color: 0x2F8CD8
+      border_width: 5
+      border_color: 0x2F8CD8
+      border_opa: 50%
+      outline_width: 1
     - id: tab_theme
       border_width: 0
       border_color: 0x0077b3
